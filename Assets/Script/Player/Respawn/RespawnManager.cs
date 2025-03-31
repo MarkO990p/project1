@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RespawnManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class RespawnManager : MonoBehaviour
     private Rigidbody2D playerRb;
     private Animator playerAnimator;
     private PlayerController playerController;
-    private PlayerShooting playerShooting; // เพิ่มตัวแปรสำหรับ PlayerShooting
+    private PlayerShooting playerShooting;
     private Health playerHealth;
     private MaleAttack playerMalee;
 
@@ -23,13 +24,40 @@ public class RespawnManager : MonoBehaviour
             playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
             playerAnimator = player.GetComponent<Animator>();
             playerController = player.GetComponent<PlayerController>();
-            playerShooting = player.GetComponent<PlayerShooting>(); // อ้างอิง PlayerShooting
+            playerShooting = player.GetComponent<PlayerShooting>();
             playerHealth = player.GetComponent<Health>();
             playerMalee = player.GetComponent<MaleAttack>();
         }
         else
         {
             Debug.LogError("Player GameObject is not assigned in RespawnManager!");
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (respawnPoint == null)
+        {
+            GameObject go = GameObject.FindGameObjectWithTag("RespawnPoint");
+            if (go != null)
+            {
+                respawnPoint = go.transform;
+                Debug.Log("✅ RespawnPoint assigned from scene: " + scene.name);
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ No RespawnPoint found in loaded scene: " + scene.name);
+            }
         }
     }
 
@@ -45,6 +73,12 @@ public class RespawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnDelay);
 
+        if (respawnPoint == null)
+        {
+            Debug.LogError("❌ respawnPoint is not assigned! Cancelling respawn.");
+            yield break;
+        }
+
         player.transform.position = respawnPoint.position;
         playerAnimator.SetTrigger("idle");
         playerRb.bodyType = RigidbodyType2D.Dynamic;
@@ -54,7 +88,7 @@ public class RespawnManager : MonoBehaviour
             playerController.enabled = true;
         }
 
-        if (playerShooting != null) // ตรวจสอบและเปิดใช้งาน PlayerShooting หลังจาก Respawn
+        if (playerShooting != null)
         {
             playerShooting.enabled = true;
         }
@@ -64,10 +98,10 @@ public class RespawnManager : MonoBehaviour
             playerHealth.ResetHealth();
         }
 
-        if (playerMalee != null) // ตรวจสอบและเปิดใช้งาน MaleAttack หลังจาก Respawn
-    {
-        playerMalee.enabled = true;
-    }
+        if (playerMalee != null)
+        {
+            playerMalee.enabled = true;
+        }
 
         playerSpriteRenderer.color = Color.white;
     }

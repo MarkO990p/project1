@@ -5,66 +5,115 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class MenuController : MonoBehaviour
+public class MenuController : Menu
 {
+    [Header("Menu Navigation")]
+    [SerializeField] private SaveSlotsMenu saveSlotsMenu;
+
     [Header("การตั้งค่าเสียง")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 1.0f;
-    [SerializeField] private AudioSource backgroundMusic = null; // เพิ่ม AudioSource สำหรับเสียงเพลง
-    [SerializeField] private float volumeStep = 0.1f;  // กำหนดค่าการเพิ่มหรือลดเสียง
+    [SerializeField] private AudioSource backgroundMusic = null;
+    [SerializeField] private float volumeStep = 0.1f;
 
     [Header("การยืนยัน")]
     [SerializeField] private GameObject comfirmationPrompt = null;
 
-    [Header("เลเวลที่จะโหลด")]
-    public string _newGameLevel;
-    private string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;
+    [Header("ปุ่มเมนู")]
+    [SerializeField] private Button newGameEasyButton;
+    [SerializeField] private Button newGameNomalButton;
+    [SerializeField] private Button newGameHardButton;
+    [SerializeField] private Button continueGameButton;
+    [SerializeField] private Button loadGameButton;
+    //[SerializeField] private SaveSlotsMenu SaveSlotsMenu;
 
     void Start()
     {
-        // ตั้งค่าเริ่มต้นของ Slider ให้เป็นค่าเสียงที่บันทึกไว้หรือค่าเริ่มต้น
         volumeSlider.value = PlayerPrefs.GetFloat("masterVolume", defaultVolume);
-        SetVolume(volumeSlider.value); // ปรับระดับเสียงเมื่อเริ่มเกม
+        SetVolume(volumeSlider.value);
+        DisableButtonsDependingOnData();
     }
 
-    public void NewGameDialogYes()
+    private void start()
     {
-        SceneManager.LoadScene(_newGameLevel);
+        if (!DataPersistenceManager.instance.HasGameData())
+        {
+            continueGameButton.interactable = false;
+            loadGameButton.interactable = false;
+        }
     }
 
-    public void LoadGameDialogYes()
+    private void DisableButtonsDependingOnData()
     {
-        if (PlayerPrefs.HasKey("SavedLevel"))
-        {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
-        }
-        else
-        {
-            noSavedGameDialog.SetActive(true);
-        }
+        //if (!DataPersistenceManager.instance.HasGameData())
+        //{
+        //    continueGameButton.interactable = false;
+        //    loadGameButton.interactable = false;
+        //}
+    }
+
+    public void OnNewGameEasyGameClicked()
+    {
+        saveSlotsMenu.ActivateMenu(false);
+        this.DeactivateMenu();
+
+    }
+
+    public void OnNewGameNomalGameClicked()
+    {
+
+    }
+
+    public void OnNewGameHardGameClicked()
+    {
+
+    }
+
+    public void OnLoadGameClicked()
+    {
+        saveSlotsMenu.ActivateMenu(true);
+        this.DeactivateMenu();
+    }
+
+    public void OnContinueGameClicked()
+    {
+        DisableMenuButtons();
+        DataPersistenceManager.instance.SaveGame();
+        SceneManager.LoadSceneAsync("LABzone1");
+    }
+
+    private void DisableMenuButtons()
+    {
+        if (newGameEasyButton != null)
+            newGameEasyButton.interactable = false;
+
+        if (newGameNomalButton != null)
+            newGameNomalButton.interactable = false;
+
+        if (newGameHardButton != null)
+            newGameHardButton.interactable = false;
+
+        if (continueGameButton != null)
+            continueGameButton.interactable = false;
     }
 
     public void ExitButton()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     public void SetVolume(float volume)
     {
-        // จำกัดค่าเสียงให้อยู่ระหว่าง 0 และ 1
         volume = Mathf.Clamp(volume, 0, 1);
         AudioListener.volume = volume;
         volumeTextValue.text = volume.ToString("0.0");
         volumeSlider.value = volume;
-        
-        // ปรับระดับเสียงของ AudioSource ที่กำลังเล่นเพลง
+
         if (backgroundMusic != null)
         {
             backgroundMusic.volume = volume;
@@ -88,16 +137,14 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    // เมธอดสำหรับเพิ่มระดับเสียง
     public void IncreaseVolume()
     {
-        SetVolume(AudioListener.volume + volumeStep);  // เพิ่มระดับเสียงทีละ step
+        SetVolume(AudioListener.volume + volumeStep);
     }
 
-    // เมธอดสำหรับลดระดับเสียง
     public void DecreaseVolume()
     {
-        SetVolume(AudioListener.volume - volumeStep);  // ลดระดับเสียงทีละ step
+        SetVolume(AudioListener.volume - volumeStep);
     }
 
     public IEnumerator ConfirmationBox()
@@ -105,5 +152,15 @@ public class MenuController : MonoBehaviour
         comfirmationPrompt.SetActive(true);
         yield return new WaitForSeconds(2);
         comfirmationPrompt.SetActive(false);
+    }
+
+    public void ActivateMenu()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    public void DeactivateMenu()
+    {
+        this.gameObject.SetActive(false);
     }
 }

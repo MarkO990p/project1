@@ -11,7 +11,7 @@ public class BossZoneTrigger : MonoBehaviour
     private void Start()
     {
         bossScript = boss.GetComponent<Boss>();
-        bossScript.enabled = false;
+        bossScript.IsActive = false;  // เริ่มต้นให้บอสไม่ทำงาน
         Debug.Log("BossZoneTrigger initialized and boss script disabled.");
     }
 
@@ -24,7 +24,7 @@ public class BossZoneTrigger : MonoBehaviour
 
             if (bossScript != null)
             {
-                bossScript.enabled = true;
+                bossScript.ActivateBoss();  // เปิดใช้งานบอสเมื่อผู้เล่นเข้ามาในพื้นที่
                 Debug.Log("Boss starts attacking.");
             }
         }

@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IDataPersistence
 {
     [Header("Health & Armor")]
     [SerializeField] private float startingHealth;
@@ -10,26 +11,18 @@ public class Health : MonoBehaviour
     [SerializeField] private bool isPlayer;
     public float currentHealth { get; private set; }
     public float currentArmor { get; private set; }
-    private bool shieldActive;
 
-    [Header("Shield UI Images")]
-    [SerializeField] private Image shieldActiveImage;
-    [SerializeField] private Image shieldInactiveImage;
-
-    [Header("Armor GameObject")]
-    [SerializeField] private GameObject armorGameObject;
-
-    [Header("iFrames")]
-    [SerializeField] private float iFramesDuration;
-    [SerializeField] private float numberOfFlashes;
     private Animator anim;
     private bool dead;
-
-    private PlayerController playerController;
     private Rigidbody2D rb;
+    private PlayerController playerController;
     private RespawnManager respawnManager;
+    private SpriteRenderer spriteRenderer;
 
-    // เพิ่ม ParticleSystem สำหรับเอฟเฟกต์ตอนตาย
+    [Header("iFrames")]
+    [SerializeField] private float iFramesDuration = 0.5f;
+    [SerializeField] private float numberOfFlashes = 3;
+
     [Header("Death Effect")]
     [SerializeField] private ParticleSystem deathEffect;
 
@@ -39,104 +32,67 @@ public class Health : MonoBehaviour
         currentArmor = startingArmor;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (isPlayer)
         {
             playerController = GetComponent<PlayerController>();
             respawnManager = FindObjectOfType<RespawnManager>();
         }
-
-        UpdateShieldImage();
     }
 
-    private void Update()
+    public void LoadData(GameData data)
     {
-        if (isPlayer && Input.GetKeyDown(KeyCode.L))
+        this.currentHealth = data.currentHealth;
+        this.currentArmor = data.currentArmor;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.currentHealth = this.currentHealth;
+        data.currentArmor = this.currentArmor;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (dead) return;
+
+        float remainingDamage = damage;
+
+        if (currentArmor > 0)
         {
-            ToggleShield();
+            float absorbedDamage = Mathf.Min(remainingDamage, currentArmor);
+            currentArmor -= absorbedDamage;
+            remainingDamage -= absorbedDamage;
         }
-    }
 
-    private void ToggleShield()
-    {
-        shieldActive = !shieldActive;
-        UpdateShieldImage();
-
-        if (shieldActive)
+        if (remainingDamage > 0)
         {
-            Debug.Log("เปิดใช้งานเกราะ");
-            if (armorGameObject != null)
-            {
-                armorGameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            Debug.Log("ปิดการใช้งานเกราะ");
-            if (armorGameObject != null)
-            {
-                armorGameObject.SetActive(false);
-            }
-        }
-    }
-
-    private void UpdateShieldImage()
-{
-    // ปิดการแสดงผลของเกราะหากเกราะหมด
-    if (currentArmor <= 0)
-    {
-        shieldActive = false;
-    }
-
-    if (shieldActive)
-    {
-        if (shieldActiveImage != null) shieldActiveImage.enabled = true;
-        if (shieldInactiveImage != null) shieldInactiveImage.enabled = false;
-        if (armorGameObject != null) armorGameObject.SetActive(true);
-    }
-    else
-    {
-        if (shieldActiveImage != null) shieldActiveImage.enabled = false;
-        if (shieldInactiveImage != null) shieldInactiveImage.enabled = true;
-        if (armorGameObject != null) armorGameObject.SetActive(false);
-    }
-}
-
-    public bool IsShieldActive()
-    {
-        return shieldActive;
-    }
-
-    public void TakeArmorDamage(float damage)
-{
-    if (shieldActive && currentArmor > 0)
-    {
-        float damageToArmor = Mathf.Min(damage, currentArmor);
-        currentArmor -= damageToArmor;
-        Debug.Log("Armor took " + damageToArmor + " damage. Remaining armor: " + currentArmor);
-        
-        // ตรวจสอบว่าเกราะหมดหรือไม่
-        if (currentArmor <= 0 && armorGameObject != null)
-        {
-            Debug.Log("Armor is depleted. Deactivating armor GameObject.");
-            armorGameObject.SetActive(false); // ปิดการแสดงผล GameObject ของเกราะ
-            UpdateShieldImage(); // อัพเดต UI เพื่อแสดงให้แน่ใจว่าเกราะถูกปิด
-        }
-    }
-}
-
-    public void TakeHealthDamage(float damage)
-    {
-        if (!shieldActive || currentArmor <= 0)
-        {
-            currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-            Debug.Log("Health took " + damage + " damage. Remaining health: " + currentHealth);
+            currentHealth = Mathf.Clamp(currentHealth - remainingDamage, 0, startingHealth);
+            StartCoroutine(FlashDuringIFrames());
 
             if (currentHealth <= 0 && !dead)
             {
                 Die();
             }
         }
+    }
+
+    private IEnumerator FlashDuringIFrames()
+    {
+        Color originalColor = spriteRenderer.color;
+        Color flashColor = new Color(1, 0, 0, 0.5f);
+        float flashInterval = iFramesDuration / (numberOfFlashes * 2);
+
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            spriteRenderer.color = flashColor;
+            yield return new WaitForSeconds(flashInterval);
+            spriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(flashInterval);
+        }
+
+        spriteRenderer.color = originalColor;
     }
 
     private void Die()
@@ -146,7 +102,6 @@ public class Health : MonoBehaviour
         dead = true;
         anim.SetTrigger("die");
 
-        // แสดง Particle Effect ตอนตาย
         if (deathEffect != null)
         {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -197,30 +152,13 @@ public class Health : MonoBehaviour
         }
     }
 
-    private IEnumerator Invulnerability()
+    public float GetCurrentArmor() => currentArmor;
+    public float GetMaxArmor() => startingArmor;
+    public float GetCurrentHealth() => currentHealth;
+
+    public void SetCurrentHealth(float health)
     {
-        Physics2D.IgnoreLayerCollision(3, 7, true);
-
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        if (sprite == null)
-        {
-            Debug.LogWarning("SpriteRenderer not found on this GameObject.");
-            yield break;
-        }
-
-        Color originalColor = sprite.color;
-        Color flashColor = Color.red;
-
-        for (int i = 0; i < numberOfFlashes; i++)
-        {
-            sprite.color = flashColor;
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
-            sprite.color = originalColor;
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
-        }
-
-        sprite.color = originalColor;
-        Physics2D.IgnoreLayerCollision(3, 7, false);
+        currentHealth = Mathf.Clamp(health, 0, startingHealth);
     }
 
     public void ResetHealth()
@@ -240,42 +178,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
-{
-    if (dead) return;
-
-    if (shieldActive && currentArmor > 0)
+    public void AddHealth(int val)
     {
-        TakeArmorDamage(damage); // เรียกใช้ TakeArmorDamage ก่อน
+        if (dead) return;
+        currentHealth = Mathf.Clamp(currentHealth + val, 0, startingHealth);
     }
-    
-    // คำนวณความเสียหายต่อสุขภาพถ้าเกราะหมด
-    if (damage > 0 && (!shieldActive || currentArmor <= 0))
-    {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-        Debug.Log("Health took " + damage + " damage. Remaining health: " + currentHealth);
-
-        anim.SetTrigger("hurt");
-
-        if (currentHealth <= 0 && !dead)
-        {
-            Die();
-        }
-        else
-        {
-            StartCoroutine(Invulnerability());
-        }
-    }
-}
-public float GetCurrentHealth()
-{
-    return currentHealth;
-}
-
-public void SetCurrentHealth(float health)
-{
-    currentHealth = Mathf.Clamp(health, 0, startingHealth);  // จำกัดค่าให้อยู่ในช่วงที่กำหนด
-    Debug.Log("Loaded Health: " + currentHealth);
-}
-
 }

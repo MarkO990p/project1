@@ -31,6 +31,8 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
+        DataPersistenceManager.instance.SaveGame();
+
         // ตรวจสอบการกดปุ่ม Esc เพื่อสลับสถานะหยุด/เริ่มเกม
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -85,6 +87,8 @@ public class PauseManager : MonoBehaviour
     // ฟังก์ชันสำหรับไปยังเมนูหลัก
     public void GoToMainMenu()
     {
+        
+
         Time.timeScale = 1f; // ให้เวลาในเกมทำงานปกติ
         SceneManager.LoadScene("MainMenu"); // โหลด Scene เมนูหลัก
     }

@@ -1,69 +1,48 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+public class PressurePlate2D : MonoBehaviour
 {
-    public Door1 door; // เชื่อมกับ Door
-    private bool isPressed = false; // ตรวจสอบว่าปุ่มถูกเหยียบอยู่หรือไม่
-    public Vector3 pressedPosition; // ตำแหน่งเมื่อปุ่มถูกเหยียบ
-    public Vector3 originalPosition; // ตำแหน่งเริ่มต้นของปุ่ม
-    public float pressDistance = 0.1f; // ระยะการกดลงของปุ่ม
-    private bool doorOpen = false; // ตรวจสอบว่าประตูเปิดอยู่หรือไม่
-    public Color originalColor = Color.white; // สีเริ่มต้นของปุ่ม
-    public Color pressedColor = Color.red; // สีเมื่อปุ่มถูกเหยียบ
-    private SpriteRenderer spriteRenderer; // สำหรับการเปลี่ยนสีปุ่ม
+    public float pressDistance = 0.1f;
+    public Color originalColor = Color.white;
+    public Color pressedColor = Color.red;
+
+    public Door2D door; // อ้างถึง Door2D โดยตรง
+
+    private Vector3 plateInitialPos;
+    private SpriteRenderer plateRenderer;
+    private bool isPressed = false;
 
     private void Start()
     {
-        originalPosition = transform.position; // บันทึกตำแหน่งเริ่มต้นของปุ่ม
-        pressedPosition = originalPosition - new Vector3(0, pressDistance, 0); // กำหนดตำแหน่งเมื่อปุ่มถูกเหยียบ
-        spriteRenderer = GetComponent<SpriteRenderer>(); // เข้าถึง SpriteRenderer
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = originalColor; // ตั้งค่าสีเริ่มต้น
-        }
+        plateInitialPos = transform.position;
+        plateRenderer = GetComponent<SpriteRenderer>();
+        if (plateRenderer != null)
+            plateRenderer.color = originalColor;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isPressed)
         {
-            if (!isPressed) // ถ้ายังไม่ถูกเหยียบ
-            {
-                // สลับสถานะของประตู
-                if (door != null)
-                {
-                    if (doorOpen)
-                    {
-                        door.Close(); // ปิดประตูถ้ามันเปิดอยู่
-                    }
-                    else
-                    {
-                        door.Open(); // เปิดประตูถ้ามันปิดอยู่
-                    }
-                    doorOpen = !doorOpen; // สลับสถานะของประตู
-                }
+            isPressed = true;
 
-                transform.position = pressedPosition; // เปลี่ยนตำแหน่งปุ่มไปยังตำแหน่งเหยียบ
-                if (spriteRenderer != null)
-                {
-                    spriteRenderer.color = pressedColor; // เปลี่ยนสีปุ่มเมื่อถูกเหยียบ
-                }
-                isPressed = true; // ตั้งค่าว่าปุ่มถูกเหยียบแล้ว
-            }
+            transform.position = plateInitialPos - new Vector3(0, pressDistance, 0);
+            if (plateRenderer != null)
+                plateRenderer.color = pressedColor;
+
+            if (door != null)
+                door.ToggleDoor(); // เรียกใช้งาน Toggle จากฝั่ง Door
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && isPressed)
+        if (other.CompareTag("Player"))
         {
-            // ปล่อยปุ่มกลับสู่ตำแหน่งเดิม
-            transform.position = originalPosition;
-            if (spriteRenderer != null)
-            {
-                spriteRenderer.color = originalColor; // เปลี่ยนสีปุ่มกลับไปเป็นสีเดิม
-            }
-            isPressed = false; // ตั้งค่าปุ่มเป็นไม่ถูกเหยียบ
+            isPressed = false;
+            transform.position = plateInitialPos;
+            if (plateRenderer != null)
+                plateRenderer.color = originalColor;
         }
     }
 }

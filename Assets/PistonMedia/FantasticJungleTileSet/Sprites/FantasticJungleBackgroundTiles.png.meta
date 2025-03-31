@@ -1,0 +1,2026 @@
+fileFormatVersion: 2
+guid: 4f5509baa8e2758179b06ef35924a05e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: FantasticJungle_0
+  - first:
+      213: 21300002
+    second: FantasticJungle_1
+  - first:
+      213: 21300004
+    second: FantasticJungle_2
+  - first:
+      213: 21300006
+    second: FantasticJungle_3
+  - first:
+      213: 21300008
+    second: FantasticJungle_4
+  - first:
+      213: 21300010
+    second: FantasticJungle_5
+  - first:
+      213: 21300012
+    second: FantasticJungle_6
+  - first:
+      213: 21300014
+    second: FantasticJungle_7
+  - first:
+      213: 21300016
+    second: FantasticJungle_8
+  - first:
+      213: 21300018
+    second: FantasticJungle_9
+  - first:
+      213: 21300020
+    second: FantasticJungle_10
+  - first:
+      213: 21300022
+    second: FantasticJungle_11
+  - first:
+      213: 21300024
+    second: FantasticJungle_12
+  - first:
+      213: 21300026
+    second: FantasticJungle_13
+  - first:
+      213: 21300028
+    second: FantasticJungle_14
+  - first:
+      213: 21300030
+    second: FantasticJungle_15
+  - first:
+      213: 21300032
+    second: FantasticJungle_16
+  - first:
+      213: 21300034
+    second: FantasticJungle_17
+  - first:
+      213: 21300036
+    second: FantasticJungle_18
+  - first:
+      213: 21300038
+    second: FantasticJungle_19
+  - first:
+      213: 21300040
+    second: FantasticJungle_20
+  - first:
+      213: 21300042
+    second: FantasticJungle_21
+  - first:
+      213: 21300044
+    second: FantasticJungle_22
+  - first:
+      213: 21300046
+    second: FantasticJungle_23
+  - first:
+      213: 21300048
+    second: FantasticJungle_24
+  - first:
+      213: 21300050
+    second: FantasticJungle_25
+  - first:
+      213: 21300052
+    second: FantasticJungle_26
+  - first:
+      213: 21300054
+    second: FantasticJungle_27
+  - first:
+      213: 21300056
+    second: FantasticJungle_28
+  - first:
+      213: 21300058
+    second: FantasticJungle_29
+  - first:
+      213: 21300060
+    second: FantasticJungle_30
+  - first:
+      213: 21300062
+    second: FantasticJungle_31
+  - first:
+      213: 21300064
+    second: FantasticJungle_32
+  - first:
+      213: 21300066
+    second: FantasticJungle_33
+  - first:
+      213: 21300068
+    second: FantasticJungle_34
+  - first:
+      213: 21300070
+    second: FantasticJungle_35
+  - first:
+      213: 21300072
+    second: FantasticJungle_36
+  - first:
+      213: 21300074
+    second: FantasticJungle_37
+  - first:
+      213: 21300076
+    second: FantasticJungle_38
+  - first:
+      213: 21300078
+    second: FantasticJungle_39
+  - first:
+      213: 21300080
+    second: FantasticJungle_40
+  - first:
+      213: 21300082
+    second: FantasticJungle_41
+  - first:
+      213: 21300084
+    second: FantasticJungle_42
+  - first:
+      213: 21300086
+    second: FantasticJungle_43
+  - first:
+      213: 21300088
+    second: FantasticJungle_44
+  - first:
+      213: 21300090
+    second: FantasticJungle_45
+  - first:
+      213: 21300092
+    second: FantasticJungle_46
+  - first:
+      213: 21300094
+    second: FantasticJungle_47
+  - first:
+      213: 21300096
+    second: FantasticJungle_48
+  - first:
+      213: 21300098
+    second: FantasticJungle_49
+  - first:
+      213: 21300100
+    second: FantasticJungle_50
+  - first:
+      213: 21300102
+    second: FantasticJungle_51
+  - first:
+      213: 21300104
+    second: FantasticJungle_52
+  - first:
+      213: 21300106
+    second: FantasticJungle_53
+  - first:
+      213: 21300108
+    second: FantasticJungle_54
+  - first:
+      213: 21300110
+    second: FantasticJungle_55
+  - first:
+      213: 21300112
+    second: FantasticJungle_56
+  - first:
+      213: 21300114
+    second: FantasticJungle_57
+  - first:
+      213: 21300116
+    second: FantasticJungle_58
+  - first:
+      213: 21300118
+    second: FantasticJungle_59
+  - first:
+      213: 21300120
+    second: FantasticJungle_60
+  - first:
+      213: 21300122
+    second: FantasticJungle_61
+  - first:
+      213: 21300124
+    second: FantasticJungle_62
+  - first:
+      213: 21300126
+    second: FantasticJungle_63
+  - first:
+      213: 21300128
+    second: FantasticJungle_64
+  - first:
+      213: 21300130
+    second: FantasticJungle_65
+  - first:
+      213: 21300132
+    second: FantasticJungle_66
+  - first:
+      213: 21300134
+    second: FantasticJungle_67
+  - first:
+      213: 21300136
+    second: FantasticJungle_68
+  - first:
+      213: 21300138
+    second: FantasticJungle_69
+  - first:
+      213: 21300140
+    second: FantasticJungle_70
+  - first:
+      213: 21300142
+    second: FantasticJungle_71
+  - first:
+      213: 21300144
+    second: FantasticJungle_72
+  - first:
+      213: 21300146
+    second: FantasticJungle_73
+  - first:
+      213: 21300148
+    second: FantasticJungle_74
+  - first:
+      213: 21300150
+    second: FantasticJungle_75
+  - first:
+      213: 21300152
+    second: FantasticJungle_76
+  - first:
+      213: 21300154
+    second: FantasticJungle_77
+  - first:
+      213: 21300156
+    second: FantasticJungle_78
+  - first:
+      213: 21300158
+    second: FantasticJungle_79
+  - first:
+      213: 21300160
+    second: FantasticJungle_80
+  - first:
+      213: 21300162
+    second: FantasticJungle_81
+  - first:
+      213: 21300164
+    second: FantasticJungle_82
+  - first:
+      213: 21300166
+    second: FantasticJungle_83
+  - first:
+      213: 21300168
+    second: FantasticJungle_84
+  - first:
+      213: 21300170
+    second: FantasticJungle_85
+  - first:
+      213: 21300172
+    second: FantasticJungle_86
+  - first:
+      213: 21300174
+    second: FantasticJungle_87
+  - first:
+      213: 21300176
+    second: FantasticJungle_88
+  - first:
+      213: 21300178
+    second: FantasticJungle_89
+  - first:
+      213: 21300180
+    second: FantasticJungle_90
+  - first:
+      213: 21300182
+    second: FantasticJungle_91
+  - first:
+      213: 21300184
+    second: FantasticJungle_92
+  - first:
+      213: 21300186
+    second: FantasticJungle_93
+  - first:
+      213: 21300188
+    second: FantasticJungle_94
+  - first:
+      213: 21300190
+    second: FantasticJungle_95
+  - first:
+      213: 21300192
+    second: FantasticJungle_96
+  - first:
+      213: 21300194
+    second: FantasticJungle_97
+  - first:
+      213: 21300196
+    second: FantasticJungle_98
+  - first:
+      213: 21300198
+    second: FantasticJungle_99
+  - first:
+      213: 21300200
+    second: FantasticJungle_100
+  - first:
+      213: 21300202
+    second: FantasticJungle_101
+  - first:
+      213: 21300204
+    second: FantasticJungle_102
+  - first:
+      213: 21300206
+    second: FantasticJungle_103
+  - first:
+      213: 21300208
+    second: FantasticJungle_104
+  - first:
+      213: 21300210
+    second: FantasticJungle_105
+  - first:
+      213: 21300212
+    second: FantasticJungle_106
+  - first:
+      213: 21300214
+    second: FantasticJungle_107
+  - first:
+      213: 21300216
+    second: FantasticJungle_108
+  - first:
+      213: 21300218
+    second: FantasticJungle_109
+  - first:
+      213: 21300220
+    second: FantasticJungle_110
+  - first:
+      213: 21300222
+    second: FantasticJungle_111
+  - first:
+      213: 21300224
+    second: FantasticJungle_112
+  - first:
+      213: 21300226
+    second: FantasticJungle_113
+  - first:
+      213: 21300228
+    second: FantasticJungle_114
+  - first:
+      213: 21300230
+    second: FantasticJungle_115
+  - first:
+      213: 21300232
+    second: FantasticJungle_116
+  - first:
+      213: 21300234
+    second: FantasticJungle_117
+  - first:
+      213: 21300236
+    second: FantasticJungle_118
+  - first:
+      213: 21300238
+    second: FantasticJungle_119
+  - first:
+      213: 21300240
+    second: FantasticJungle_120
+  - first:
+      213: 21300242
+    second: FantasticJungle_121
+  - first:
+      213: 21300244
+    second: FantasticJungle_122
+  - first:
+      213: 21300246
+    second: FantasticJungle_123
+  - first:
+      213: 21300248
+    second: FantasticJungle_124
+  - first:
+      213: 21300250
+    second: FantasticJungle_125
+  - first:
+      213: 21300252
+    second: FantasticJungle_126
+  - first:
+      213: 21300254
+    second: FantasticJungle_127
+  - first:
+      213: 21300256
+    second: FantasticJungle_128
+  - first:
+      213: 21300258
+    second: FantasticJungle_129
+  - first:
+      213: 21300260
+    second: FantasticJungle_130
+  - first:
+      213: 21300262
+    second: FantasticJungle_131
+  - first:
+      213: 21300264
+    second: FantasticJungle_132
+  - first:
+      213: 21300266
+    second: FantasticJungle_133
+  - first:
+      213: 21300268
+    second: FantasticJungle_134
+  - first:
+      213: 21300270
+    second: FantasticJungle_135
+  - first:
+      213: 21300272
+    second: FantasticJungle_136
+  - first:
+      213: 21300274
+    second: FantasticJungle_137
+  - first:
+      213: 21300276
+    second: FantasticJungle_138
+  - first:
+      213: 21300278
+    second: FantasticJungle_139
+  - first:
+      213: 21300280
+    second: FantasticJungle_140
+  - first:
+      213: 21300282
+    second: FantasticJungle_141
+  - first:
+      213: 21300284
+    second: FantasticJungle_142
+  - first:
+      213: 21300286
+    second: FantasticJungle_143
+  - first:
+      213: 21300288
+    second: FantasticJungle_144
+  - first:
+      213: 21300290
+    second: FantasticJungle_145
+  - first:
+      213: 21300292
+    second: FantasticJungle_146
+  - first:
+      213: 21300294
+    second: FantasticJungle_147
+  - first:
+      213: 21300296
+    second: FantasticJungle_148
+  - first:
+      213: 21300298
+    second: FantasticJungle_149
+  - first:
+      213: 21300300
+    second: FantasticJungle_150
+  - first:
+      213: 21300302
+    second: FantasticJungle_151
+  - first:
+      213: 21300304
+    second: FantasticJungle_152
+  - first:
+      213: 21300306
+    second: FantasticJungle_153
+  - first:
+      213: 21300308
+    second: FantasticJungle_154
+  - first:
+      213: 21300310
+    second: FantasticJungle_155
+  - first:
+      213: 21300312
+    second: FantasticJungle_156
+  - first:
+      213: 21300314
+    second: FantasticJungle_157
+  - first:
+      213: 21300316
+    second: FantasticJungle_158
+  - first:
+      213: 21300318
+    second: FantasticJungle_159
+  - first:
+      213: 21300320
+    second: FantasticJungle_160
+  - first:
+      213: 21300322
+    second: FantasticJungle_161
+  - first:
+      213: 21300324
+    second: FantasticJungle_162
+  - first:
+      213: 21300326
+    second: FantasticJungle_163
+  - first:
+      213: 21300328
+    second: FantasticJungle_164
+  - first:
+      213: 21300330
+    second: FantasticJungle_165
+  - first:
+      213: 21300332
+    second: FantasticJungle_166
+  - first:
+      213: 21300334
+    second: FantasticJungle_167
+  - first:
+      213: 21300336
+    second: FantasticJungle_168
+  - first:
+      213: 21300338
+    second: FantasticJungle_169
+  - first:
+      213: 21300340
+    second: FantasticJungle_170
+  - first:
+      213: 21300342
+    second: FantasticJungle_171
+  - first:
+      213: 21300344
+    second: FantasticJungle_172
+  - first:
+      213: 21300346
+    second: FantasticJungle_173
+  - first:
+      213: 21300348
+    second: FantasticJungle_174
+  - first:
+      213: 21300350
+    second: FantasticJungle_175
+  - first:
+      213: 21300352
+    second: FantasticJungle_176
+  - first:
+      213: 21300354
+    second: FantasticJungle_177
+  - first:
+      213: 21300356
+    second: FantasticJungle_178
+  - first:
+      213: 21300358
+    second: FantasticJungle_179
+  - first:
+      213: 21300360
+    second: FantasticJungle_180
+  - first:
+      213: 21300362
+    second: FantasticJungle_181
+  - first:
+      213: 21300364
+    second: FantasticJungle_182
+  - first:
+      213: 21300366
+    second: FantasticJungle_183
+  - first:
+      213: 21300368
+    second: FantasticJungle_184
+  - first:
+      213: 21300370
+    second: FantasticJungle_185
+  - first:
+      213: 21300372
+    second: FantasticJungle_186
+  - first:
+      213: 21300374
+    second: FantasticJungle_187
+  - first:
+      213: 21300376
+    second: FantasticJungle_188
+  - first:
+      213: 21300378
+    second: FantasticJungle_189
+  - first:
+      213: -3124710193926995228
+    second: FantasticJungle_190
+  - first:
+      213: 5533265798179449895
+    second: FantasticJungle_191
+  - first:
+      213: -5185421697161204487
+    second: FantasticJungle_192
+  - first:
+      213: 8526514805263826245
+    second: FantasticJungle_193
+  - first:
+      213: -7638727721499883567
+    second: FantasticJungle_194
+  - first:
+      213: 2903265279986665166
+    second: FantasticJungle_195
+  - first:
+      213: 4505700544630338198
+    second: FantasticJungle_196
+  - first:
+      213: 9164752480247830320
+    second: FantasticJungle_197
+  - first:
+      213: 255823063008521260
+    second: FantasticJungle_198
+  - first:
+      213: 5381505301394999823
+    second: FantasticJungle_199
+  - first:
+      213: -1206085703885576883
+    second: FantasticJungle_200
+  - first:
+      213: -5663120771967585487
+    second: FantasticJungle_201
+  - first:
+      213: -2103431510344640249
+    second: FantasticJungle_202
+  - first:
+      213: -1302535463051168751
+    second: FantasticJungle_203
+  - first:
+      213: -3536220620776576825
+    second: FantasticJungle_204
+  - first:
+      213: -6948445483199761264
+    second: FantasticJungle_205
+  - first:
+      213: 1492300678511518725
+    second: FantasticJungle_206
+  - first:
+      213: -2523885210849943405
+    second: FantasticJungle_207
+  - first:
+      213: 2367756415508190548
+    second: FantasticJungleBackground_0
+  - first:
+      213: 860343109883026953
+    second: FantasticJungleBackground_1
+  - first:
+      213: -7421607773481501920
+    second: FantasticJungleBackground_2
+  - first:
+      213: -7954684271377831870
+    second: FantasticJungleBackground_3
+  - first:
+      213: 5571696692542299620
+    second: FantasticJungleBackground_4
+  - first:
+      213: -805486294013369423
+    second: FantasticJungleBackground_5
+  - first:
+      213: 9035107328469599693
+    second: FantasticJungleBackground_6
+  - first:
+      213: -4855038625562660601
+    second: FantasticJungleBackground_7
+  - first:
+      213: -3981863997461206875
+    second: FantasticJungleBackground_8
+  - first:
+      213: -414167628388133966
+    second: FantasticJungleBackground_9
+  - first:
+      213: 4711125737801807815
+    second: FantasticJungleBackground_10
+  - first:
+      213: 5540863391913330354
+    second: FantasticJungleBackground_11
+  - first:
+      213: -1015096183164306590
+    second: FantasticJungleBackground_12
+  - first:
+      213: -4282793156519892983
+    second: FantasticJungleBackground_13
+  - first:
+      213: 713633400606623482
+    second: FantasticJungleBackground_14
+  - first:
+      213: 4873539714457500581
+    second: FantasticJungleBackground_15
+  - first:
+      213: 350694435905206029
+    second: FantasticJungleBackground_16
+  - first:
+      213: -57213495877913198
+    second: FantasticJungleBackground_17
+  - first:
+      213: -6762076139180457892
+    second: FantasticJungleBackground_18
+  - first:
+      213: -3304129802872097725
+    second: FantasticJungleBackground_19
+  - first:
+      213: 4614917837785841019
+    second: FantasticJungleBackground_20
+  - first:
+      213: -2491033105934383818
+    second: FantasticJungleBackground_21
+  - first:
+      213: 4377155536270881253
+    second: FantasticJungleBackground_22
+  - first:
+      213: -2398351024788090130
+    second: FantasticJungleBackground_23
+  - first:
+      213: -872975688502675808
+    second: FantasticJungleBackground_24
+  - first:
+      213: 4068368269201721360
+    second: FantasticJungleBackground_25
+  - first:
+      213: -5828199776707625409
+    second: FantasticJungleBackground_26
+  - first:
+      213: 9179899537252363075
+    second: FantasticJungleBackground_27
+  - first:
+      213: -4309369662878909610
+    second: FantasticJungleBackground_28
+  - first:
+      213: 2322015791189293344
+    second: FantasticJungleBackground_29
+  - first:
+      213: 2870471455634600819
+    second: FantasticJungleBackground_30
+  - first:
+      213: 1712432894374828006
+    second: FantasticJungleBackground_31
+  - first:
+      213: 5996002277093519443
+    second: FantasticJungleBackground_32
+  - first:
+      213: 9174892086107488613
+    second: FantasticJungleBackground_33
+  - first:
+      213: 4410530366428407408
+    second: FantasticJungleBackground_34
+  - first:
+      213: -5499134530680011746
+    second: FantasticJungleBackground_35
+  - first:
+      213: 1733292471966496383
+    second: FantasticJungleBackground_36
+  - first:
+      213: -4551279429469485065
+    second: FantasticJungleBackground_37
+  - first:
+      213: 1326275723295917566
+    second: FantasticJungleBackground_38
+  - first:
+      213: -997958157273673145
+    second: FantasticJungleBackground_39
+  - first:
+      213: 142241526423041842
+    second: FantasticJungleBackground_40
+  - first:
+      213: -6314722010193717997
+    second: FantasticJungleBackground_41
+  - first:
+      213: 3847544526211610402
+    second: FantasticJungleBackground_42
+  - first:
+      213: 191979726887826302
+    second: FantasticJungleBackground_43
+  - first:
+      213: -1897920936397865257
+    second: FantasticJungleBackground_44
+  - first:
+      213: 9176663558892021906
+    second: FantasticJungleBackground_45
+  - first:
+      213: 1631298260842811316
+    second: FantasticJungleBackground_46
+  - first:
+      213: 1923676769686485389
+    second: FantasticJungleBackground_47
+  - first:
+      213: 5094461133568654982
+    second: FantasticJungleBackground_48
+  - first:
+      213: -7624937856802627324
+    second: FantasticJungleBackground_49
+  - first:
+      213: -8250416962021367972
+    second: FantasticJungleBackground_50
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FantasticJungleBackground_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455940d3ae5fbd020800000000000000
+      internalID: 2367756415508190548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e5889008d80fb00800000000000000
+      internalID: 860343109883026953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02b7b572d07210990800000000000000
+      internalID: -7421607773481501920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24823280dc84b9190800000000000000
+      internalID: -7954684271377831870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4edd33b2f94a25d40800000000000000
+      internalID: 5571696692542299620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b323e5bb7652d4f0800000000000000
+      internalID: -805486294013369423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc585f4ce36236d70800000000000000
+      internalID: 9035107328469599693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7017988d7107f9cb0800000000000000
+      internalID: -4855038625562660601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a868678ac39db8c0800000000000000
+      internalID: -3981863997461206875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b395708cb4904af0800000000000000
+      internalID: -414167628388133966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c770edd5e7416140800000000000000
+      internalID: 4711125737801807815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_11
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6c5ffe5e915ec40800000000000000
+      internalID: 5540863391913330354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26bf2ad4667a9e1f0800000000000000
+      internalID: -1015096183164306590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_13
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908682bb0567094c0800000000000000
+      internalID: -4282793156519892983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af6030ffbc557e900800000000000000
+      internalID: 713633400606623482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab7ff69c8a42a340800000000000000
+      internalID: 4873539714457500581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d07f5dc3bbaedd400800000000000000
+      internalID: 350694435905206029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295b6dde0acb43ff0800000000000000
+      internalID: -57213495877913198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50010414974822a0800000000000000
+      internalID: -6762076139180457892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_19
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 344f608437f5522d0800000000000000
+      internalID: -3304129802872097725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7db6d4925b7b0040800000000000000
+      internalID: 4614917837785841019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_21
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6350b0596921e6dd0800000000000000
+      internalID: -2491033105934383818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e17f02e4c7cebc30800000000000000
+      internalID: 4377155536270881253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_23
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee2dfc0337857bed0800000000000000
+      internalID: -2398351024788090130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6fe3d8c3192e3f0800000000000000
+      internalID: -872975688502675808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_25
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0184d3db26fb57830800000000000000
+      internalID: 4068368269201721360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_26
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3eb455ae231e1fa0800000000000000
+      internalID: -5828199776707625409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_27
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b23bfedfd856f70800000000000000
+      internalID: 9179899537252363075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65bf146af1b0234c0800000000000000
+      internalID: -4309369662878909610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_29
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0297fac3f05793020800000000000000
+      internalID: 2322015791189293344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_30
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 373bffa9496f5d720800000000000000
+      internalID: 2870471455634600819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e7d7e205a8c3c710800000000000000
+      internalID: 1712432894374828006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_32
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350b7968d44163350800000000000000
+      internalID: 5996002277093519443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_33
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561cafcddb3c35f70800000000000000
+      internalID: 9174892086107488613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_34
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076e902100a553d30800000000000000
+      internalID: 4410530366428407408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_35
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14cbbea7462fa3b0800000000000000
+      internalID: -5499134530680011746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_36
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76fb63e154ed0810800000000000000
+      internalID: 1733292471966496383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_37
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7cdecf87b96d0c0800000000000000
+      internalID: -4551279429469485065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_38
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef507415eb0e76210800000000000000
+      internalID: 1326275723295917566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_39
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742dff6e75a8622f0800000000000000
+      internalID: -997958157273673145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_40
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23731c62ae759f100800000000000000
+      internalID: 142241526423041842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_41
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315101fd9c99d58a0800000000000000
+      internalID: -6314722010193717997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_42
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22777568c59356530800000000000000
+      internalID: 3847544526211610402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_43
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e73b9316b8c0aa200800000000000000
+      internalID: 191979726887826302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_44
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7de7a36c6fa39a5e0800000000000000
+      internalID: -1897920936397865257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_45
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 298e70303ee0a5f70800000000000000
+      internalID: 9176663558892021906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_46
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf8f30102983a610800000000000000
+      internalID: 1631298260842811316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8975d774d542ba10800000000000000
+      internalID: 1923676769686485389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_48
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68eb46cc86923b640800000000000000
+      internalID: 5094461133568654982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_49
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 401e9dafa67ce2690800000000000000
+      internalID: -7624937856802627324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FantasticJungleBackground_50
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5fdbd15c71a08d80800000000000000
+      internalID: -8250416962021367972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c130bf5e255a1b705890fd3db44ce58d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FantasticJungleBackground_0: 2367756415508190548
+      FantasticJungleBackground_1: 860343109883026953
+      FantasticJungleBackground_10: 4711125737801807815
+      FantasticJungleBackground_11: 5540863391913330354
+      FantasticJungleBackground_12: -1015096183164306590
+      FantasticJungleBackground_13: -4282793156519892983
+      FantasticJungleBackground_14: 713633400606623482
+      FantasticJungleBackground_15: 4873539714457500581
+      FantasticJungleBackground_16: 350694435905206029
+      FantasticJungleBackground_17: -57213495877913198
+      FantasticJungleBackground_18: -6762076139180457892
+      FantasticJungleBackground_19: -3304129802872097725
+      FantasticJungleBackground_2: -7421607773481501920
+      FantasticJungleBackground_20: 4614917837785841019
+      FantasticJungleBackground_21: -2491033105934383818
+      FantasticJungleBackground_22: 4377155536270881253
+      FantasticJungleBackground_23: -2398351024788090130
+      FantasticJungleBackground_24: -872975688502675808
+      FantasticJungleBackground_25: 4068368269201721360
+      FantasticJungleBackground_26: -5828199776707625409
+      FantasticJungleBackground_27: 9179899537252363075
+      FantasticJungleBackground_28: -4309369662878909610
+      FantasticJungleBackground_29: 2322015791189293344
+      FantasticJungleBackground_3: -7954684271377831870
+      FantasticJungleBackground_30: 2870471455634600819
+      FantasticJungleBackground_31: 1712432894374828006
+      FantasticJungleBackground_32: 5996002277093519443
+      FantasticJungleBackground_33: 9174892086107488613
+      FantasticJungleBackground_34: 4410530366428407408
+      FantasticJungleBackground_35: -5499134530680011746
+      FantasticJungleBackground_36: 1733292471966496383
+      FantasticJungleBackground_37: -4551279429469485065
+      FantasticJungleBackground_38: 1326275723295917566
+      FantasticJungleBackground_39: -997958157273673145
+      FantasticJungleBackground_4: 5571696692542299620
+      FantasticJungleBackground_40: 142241526423041842
+      FantasticJungleBackground_41: -6314722010193717997
+      FantasticJungleBackground_42: 3847544526211610402
+      FantasticJungleBackground_43: 191979726887826302
+      FantasticJungleBackground_44: -1897920936397865257
+      FantasticJungleBackground_45: 9176663558892021906
+      FantasticJungleBackground_46: 1631298260842811316
+      FantasticJungleBackground_47: 1923676769686485389
+      FantasticJungleBackground_48: 5094461133568654982
+      FantasticJungleBackground_49: -7624937856802627324
+      FantasticJungleBackground_5: -805486294013369423
+      FantasticJungleBackground_50: -8250416962021367972
+      FantasticJungleBackground_6: 9035107328469599693
+      FantasticJungleBackground_7: -4855038625562660601
+      FantasticJungleBackground_8: -3981863997461206875
+      FantasticJungleBackground_9: -414167628388133966
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

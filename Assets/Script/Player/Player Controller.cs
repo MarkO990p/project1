@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
+    [Header("Attributes SO")]
+    [SerializeField] private AttributesScriptableObject playerAttributesSO;
+
     private float movementInputDirection;
     private float jumpTimer;
     private float turnTimer;
@@ -66,6 +69,41 @@ public class PlayerController : MonoBehaviour
 
 
 
+
+    public void LoadData(GameData data)
+    {
+        // ตรวจสอบว่า gameData มีข้อมูลตำแหน่งของผู้เล่นหรือไม่
+        if (data != null)
+        {
+            this.transform.position = data.playerPosition;  // อัปเดตตำแหน่งของผู้เล่นจากข้อมูลที่โหลด
+            Debug.Log("playerPosition");
+
+            playerAttributesSO.vitality = data.playerAttributesData.vitality;
+            playerAttributesSO.strength = data.playerAttributesData.strength;
+            playerAttributesSO.intellect = data.playerAttributesData.intellect;
+            playerAttributesSO.endurance = data.playerAttributesData.endurance;
+        }
+    }
+
+
+
+
+    public void SaveData(GameData data)
+    {
+        // บันทึกตำแหน่งผู้เล่น
+        data.playerPosition = this.transform.position;  // ตั้งค่าตำแหน่งของผู้เล่นใน gameData
+        Debug.Log("playerPosition");
+
+        // บันทึกข้อมูลทางสถิติของผู้เล่น
+        data.playerAttributesData.vitality = playerAttributesSO.vitality;
+        data.playerAttributesData.strength = playerAttributesSO.strength;
+        data.playerAttributesData.intellect = playerAttributesSO.intellect;
+        data.playerAttributesData.endurance = playerAttributesSO.endurance;
+        
+    }
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -76,8 +114,9 @@ public class PlayerController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
     }
 
-    void Update()
+    private void Update()
     {
+        // ตรวจสอบและบันทึกข้อมูล
         CheckInput();
         CheckMovementDirection();
         UpdateAnimations();
@@ -86,7 +125,12 @@ public class PlayerController : MonoBehaviour
         CheckJump();
         CheckDash();
         CheckDropDown();
+
+        // บันทึกข้อมูลเกม
+        DataPersistenceManager.instance.SaveGame();
     }
+
+
 
     private void FixedUpdate()
     {
@@ -396,5 +440,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
     }
+
+    
 
 }
