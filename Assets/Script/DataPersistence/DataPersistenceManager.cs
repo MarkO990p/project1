@@ -52,61 +52,58 @@ public class DataPersistenceManager : MonoBehaviour
 
         if (gameData == null)
         {
-            // เริ่มต้นข้อมูลเกมใหม่หากไม่มีข้อมูล
             gameData = new GameData();
         }
     }
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;  // Register event when scene is loaded
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;  // Deregister event when scene is unloaded
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         if (autoSaveCoroutine != null)
         {
-            StopCoroutine(autoSaveCoroutine);  // Stop auto-save when game is closed or scene changes
+            StopCoroutine(autoSaveCoroutine);
         }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // ตรวจสอบการกำหนดค่า dataPersistenceObjects
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
 
         if (dataPersistenceObjects == null || dataPersistenceObjects.Count == 0)
         {
             Debug.LogError("No data persistence objects found in the scene.");
-            return;  // หยุดการทำงานของฟังก์ชันนี้หากไม่มี dataPersistenceObjects
+            return;
         }
 
-        // ตรวจสอบว่า gameData ถูกโหลดหรือไม่
         if (gameData == null)
         {
             Debug.LogError("GameData is not loaded.");
-            return;  // หากไม่มี gameData, หยุดการทำงาน
+            return;
         }
 
-        LoadGame();  // โหลดข้อมูลเกมเมื่อ Scene ถูกโหลด
+        LoadGame();
 
-        // หยุด Coroutine ที่กำลังทำงานอยู่
         if (autoSaveCoroutine != null)
         {
             StopCoroutine(autoSaveCoroutine);
         }
-        autoSaveCoroutine = StartCoroutine(AutoSave());  // เริ่ม Coroutine สำหรับการบันทึกอัตโนมัติ
+        autoSaveCoroutine = StartCoroutine(AutoSave());
 
-        // บันทึกฉากที่ผ่าน
-        SetCurrentScene(scene.name);
+        StartCoroutine(DelayedSaveSceneInfo(scene.name));
 
-        // ตั้งค่าตำแหน่งของผู้เล่น
         SetPlayerPosition();
     }
 
-
-
+    private IEnumerator DelayedSaveSceneInfo(string sceneName)
+    {
+        yield return null; // wait 1 frame
+        SetCurrentScene(sceneName);
+    }
 
     public void ChangeSelectedProfileId(string newProfileId)
     {
@@ -116,10 +113,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void DeleteProfileData(string profileId)
     {
-        // เรียกฟังก์ชัน Delete ใน FileDataHandler เพื่อลบข้อมูล
         dataHandler.Delete(profileId);
-        InitializeSelectedProfileId();  // รีเซ็ตโปรไฟล์ที่เลือก
-        LoadGame();  // โหลดเกมใหม่หลังจากลบข้อมูล
+        InitializeSelectedProfileId();
+        LoadGame();
     }
 
     private void InitializeSelectedProfileId()
@@ -135,16 +131,15 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+        this.gameData.gameDifficulty = MenuController.selectedDifficulty;
 
-        // ตั้งค่าข้อมูลเริ่มต้น
-        gameData.playerPosition = new Vector3(0, 0, 0);  // ตำแหน่งเริ่มต้นของผู้เล่น
-        gameData.currentHealth = 100;  // พลังชีวิตเริ่มต้น
-        gameData.currentArmor = 100;   // เกราะเริ่มต้น
-        gameData.lastSceneName = "MainMenu";  // สมมุติว่าเริ่มต้นจาก MainMenu
-        gameData.completedScenes = new List<string>();  // ฉากที่ผ่านไปแล้ว
-        gameData.deathCount = 0;  // จำนวนครั้งที่ตาย
+        gameData.playerPosition = new Vector3(0, 0, 0);
+        gameData.currentHealth = 100;
+        gameData.currentArmor = 100;
+        gameData.lastSceneName = "MainMenu";
+        gameData.completedScenes = new List<string>();
+        gameData.deathCount = 0;
     }
-
 
     public void LoadGame()
     {
@@ -153,32 +148,28 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
-        this.gameData = dataHandler.Load(selectedProfileId);  // โหลดข้อมูลจากไฟล์
+        this.gameData = dataHandler.Load(selectedProfileId);
 
-        // หากไม่มีข้อมูล (gameData) จะต้องเริ่มต้นเกมใหม่
         if (this.gameData == null && initializeDataIfNull)
         {
-            NewGame();  // เริ่มต้นเกมใหม่ (กำหนดค่าเริ่มต้นให้กับ gameData)
+            NewGame();
         }
 
         if (this.gameData == null)
         {
             Debug.Log("No data was found. A New Game needs to be started before data can be loaded.");
-            return;  // ถ้าไม่มีข้อมูลจะไม่ทำการโหลดต่อ
+            return;
         }
 
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.LoadData(gameData);  // โหลดข้อมูลจาก gameData
+            dataPersistenceObj.LoadData(gameData);
         }
 
-        Debug.Log("Loaded game data: " + gameData.playerPosition);  // ตรวจสอบค่าตำแหน่งผู้เล่นที่โหลด
+        Debug.Log("Loaded game data: " + gameData.playerPosition);
 
-        // ตั้งค่าตำแหน่งของผู้เล่นจากข้อมูลที่โหลด
         SetPlayerPosition();
     }
-
-
 
     public void SaveGame()
     {
@@ -187,43 +178,34 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
-        // ตรวจสอบว่า gameData ถูกกำหนดค่าแล้ว
         if (this.gameData == null)
         {
             Debug.LogWarning("No data was found. A New Game needs to be started before data can be saved.");
-            NewGame();  // เริ่มต้นเกมใหม่ถ้า gameData เป็น null
+            NewGame();
         }
 
-        // ตรวจสอบว่า selectedProfileId ถูกกำหนดค่าหรือไม่
         if (string.IsNullOrEmpty(selectedProfileId))
         {
             Debug.LogError("Selected profile ID is not set. Cannot save game data.");
-            return;  // หากไม่มี selectedProfileId, หยุดการบันทึก
+            return;
         }
 
-        // ตรวจสอบว่า dataPersistenceObjects ถูกกำหนดค่าแล้ว
         if (dataPersistenceObjects == null || dataPersistenceObjects.Count == 0)
         {
             Debug.LogError("No data persistence objects found.");
-            return;  // หากไม่มี dataPersistenceObjects, หยุดการบันทึก
+            return;
         }
 
-        // ทำการบันทึกข้อมูล
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(gameData);  // บันทึกข้อมูลไปยังอ็อบเจ็กต์ที่เกี่ยวข้อง
+            dataPersistenceObj.SaveData(gameData);
         }
 
-        // บันทึกเวลาที่ข้อมูลถูกอัปเดตล่าสุด
         gameData.lastUpdated = System.DateTime.Now.ToBinary();
 
-        // ทำการบันทึกข้อมูลไปยังไฟล์
         dataHandler.Save(gameData, selectedProfileId);
         Debug.Log("Game saved successfully.");
     }
-
-
-
 
     private void OnApplicationQuit()
     {
@@ -232,13 +214,11 @@ public class DataPersistenceManager : MonoBehaviour
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
-        // ค้นหา objects ที่ implement IDataPersistence ใน Scene
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true)
             .OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
-
 
     public bool HasGameData()
     {
@@ -260,31 +240,27 @@ public class DataPersistenceManager : MonoBehaviour
         }
     }
 
-    // ✅ เพิ่มการบันทึกฉากล่าสุด
     public void SetCurrentScene(string sceneName)
     {
         if (gameData != null)
         {
-            gameData.lastSceneName = sceneName;  // บันทึกชื่อ Scene ล่าสุด
-            MarkSceneComplete(sceneName);  // บันทึกว่า Scene นี้ผ่านแล้ว
+            gameData.lastSceneName = sceneName;
+            MarkSceneComplete(sceneName);
 
-            // บันทึกตำแหน่งของผู้เล่นในเกม
             GameObject player = GameObject.FindWithTag("Player");
             if (player != null)
             {
-                gameData.playerPosition = player.transform.position;  // บันทึกตำแหน่งของผู้เล่นใน Scene
+                gameData.SetPlayerPositionForScene(sceneName, player.transform.position);
+                Debug.Log($"[SAVE] Saved player position for {sceneName}: {player.transform.position}");
             }
         }
     }
-
-
 
     public string GetLastSceneName()
     {
         return gameData?.lastSceneName;
     }
 
-    // ✅ เพิ่มการบันทึก/ตรวจสอบฉากที่ผ่านแล้ว
     public void MarkSceneComplete(string sceneName)
     {
         gameData?.MarkSceneCompleted(sceneName);
@@ -297,45 +273,35 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SetPlayerPosition()
     {
-        GameObject player = null;
-        float timeout = 5f;  // เวลารอให้ Player โหลด (หน่วยเป็นวินาที)
-        float elapsedTime = 0f;
-
-        // ตรวจสอบว่าพบ Player หรือยัง
-        while (player == null && elapsedTime < timeout)
-        {
-            player = GameObject.FindWithTag("Player");
-            elapsedTime += Time.deltaTime;
-        }
-
+        GameObject player = GameObject.FindWithTag("Player");
         if (player != null && gameData != null)
         {
-            player.transform.position = gameData.playerPosition;  // ตั้งค่าตำแหน่งของผู้เล่น
-            Debug.Log("Loaded player position: " + gameData.playerPosition);  // แสดงตำแหน่งที่โหลดจาก gameData
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            Vector3 scenePosition = gameData.GetPlayerPositionForScene(currentSceneName);
+            player.transform.position = scenePosition;
+
+            Debug.Log($"[LOAD] Loaded player position for {currentSceneName}: {scenePosition}");
         }
         else
         {
             if (player == null)
-            {
-                Debug.LogError("Player GameObject not found in the scene! Ensure the Player GameObject has the 'Player' tag.");
-            }
+                Debug.LogError("Player GameObject not found!");
 
             if (gameData == null)
-            {
-                Debug.LogError("gameData is null! Ensure that gameData is loaded correctly before setting the player's position.");
-            }
+                Debug.LogError("gameData is null!");
         }
     }
 
-
-
-
-    // เปลี่ยนชื่อฟังก์ชัน GetAllProfilesGameData ใน DataPersistenceManager.cs
     public Dictionary<string, GameData> GetAllProfilesGameDataFromFile()
     {
-        return dataHandler.LoadAllProfiles();  // ใช้ฟังก์ชัน LoadAllProfiles ใน FileDataHandler
+        return dataHandler.LoadAllProfiles();
     }
 
+    public GameData GetCurrentGameData()
+    {
+        return gameData;
+    }
 
+ 
 
 }

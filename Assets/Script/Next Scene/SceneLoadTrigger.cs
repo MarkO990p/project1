@@ -20,7 +20,6 @@ public class SceneLoadTrigger : MonoBehaviour
         }
         else
         {
-            // ✅ ป้องกันไม่ให้ Player ถูกทำลายตอนเปลี่ยนฉาก
             if (player.transform.parent == null && player.scene.name != "DontDestroyOnLoad")
             {
                 DontDestroyOnLoad(player);
@@ -33,7 +32,6 @@ public class SceneLoadTrigger : MonoBehaviour
         if (collision.gameObject == player)
         {
             Debug.Log("Player entered trigger!");
-
             LoadScenes();
             UnloadScenes();
         }
@@ -86,11 +84,22 @@ public class SceneLoadTrigger : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Characters");
 
         if (player != null)
         {
             Debug.Log("Player successfully found after scene load.");
+
+            // ✅ ย้าย Player ไปยัง Scene ที่โหลดมา
+            foreach (var s in sceneToLoad)
+            {
+                if (scene.name == s.SceneName)
+                {
+                    SceneManager.MoveGameObjectToScene(player, scene);
+                    Debug.Log($"✅ Player moved to scene: {scene.name}");
+                    break;
+                }
+            }
         }
         else
         {

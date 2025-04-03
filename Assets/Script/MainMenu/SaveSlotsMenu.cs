@@ -55,20 +55,26 @@ public class SaveSlotsMenu : Menu
         // case - loading game
         if (isLoadingGame)
         {
+            // เปลี่ยน profile ที่เลือกจาก SaveSlot
             DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+
+            // โหลดข้อมูลเกมและฉากที่ผู้เล่นเคยบันทึกไว้
+            DataPersistenceManager.instance.LoadGame();  // โหลดข้อมูลจาก SaveSlot
             SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
         }
         // case - new game, but the save slot has data
         else if (saveSlot.hasData)
         {
             confirmationPopupMenu.ActivateMenu(
-                "Starting a New Game with this slot will override the currently saved data. Are you sure?",
+                $"Starting a New Game ({MenuController.selectedDifficulty}) with this slot will override the currently saved data. Are you sure?",
                 () => {
+                    // เปลี่ยน profile และเริ่มเกมใหม่
                     DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
                     DataPersistenceManager.instance.NewGame();
                     SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
                 },
                 () => {
+                    // กลับไปที่เมนู SaveSlots
                     this.ActivateMenu(isLoadingGame);
                 }
             );
@@ -76,11 +82,13 @@ public class SaveSlotsMenu : Menu
         // case - new game, and the save slot has no data
         else
         {
+            // เริ่มเกมใหม่โดยไม่โหลดข้อมูล
             DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
             DataPersistenceManager.instance.NewGame();
             SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
         }
     }
+
 
     private void SaveGameAndLoadScene(string sceneName)
     {
@@ -103,11 +111,12 @@ public class SaveSlotsMenu : Menu
             Debug.LogError("Player GameObject not found before saving game data.");
         }
 
+        // โหลดข้อมูลจาก SaveSlot ก่อนจะโหลดฉากใหม่
+        DataPersistenceManager.instance.LoadGame();  // โหลดข้อมูลจาก SaveSlot
+
         // โหลด Scene ตามชื่อที่ได้รับ
         SceneManager.LoadSceneAsync(sceneName);
     }
-
-
 
     public void OnClearClicked(SaveSlot saveSlot)
     {
@@ -147,9 +156,13 @@ public class SaveSlotsMenu : Menu
             GameData profileData = null;
             profilesGameData.TryGetValue(saveSlot.GetProfileId(), out profileData);
 
-            // กำหนดชื่อ Scene ให้กับ SaveSlot
-            string sceneName = "Scenes/LABzone1";  // ตัวอย่างการกำหนดชื่อ Scene ให้กับ SaveSlot
-            saveSlot.SetData(profileData, sceneName);  // ส่งชื่อ Scene ที่เกี่ยวข้องไปที่ SaveSlot
+            // กำหนด sceneName ถ้าไม่มี ให้ใช้ค่า default
+            string sceneName = profileData != null && !string.IsNullOrEmpty(profileData.lastSceneName)
+                ? profileData.lastSceneName
+                : "LABzone1";  // Default scene name
+
+            // ส่งข้อมูลไปยัง SaveSlot
+            saveSlot.SetData(profileData, sceneName);
 
             if (profileData == null && isLoadingGame)
             {
@@ -158,12 +171,9 @@ public class SaveSlotsMenu : Menu
             else
             {
                 saveSlot.SetInteractable(true);
-                if (firstSelected.Equals(backButton.gameObject))
-                {
-                    firstSelected = saveSlot.gameObject;
-                }
             }
         }
+
 
         // set the first selected button
         Button firstSelectedButton = firstSelected.GetComponent<Button>();
@@ -183,4 +193,20 @@ public class SaveSlotsMenu : Menu
         }
         backButton.interactable = false;
     }
+
+    public void OnContinueFromCheckpoint()
+    {
+        var data = DataPersistenceManager.instance.gameData;
+
+        if (!string.IsNullOrEmpty(data.lastCheckpointScene))
+        {
+            SceneManager.LoadSceneAsync(data.lastCheckpointScene);
+            // เมื่อโหลดเสร็จแล้ว, SetPlayerPosition() จะวาง Player ตามตำแหน่งที่บันทึกไว้
+        }
+        else
+        {
+            Debug.LogWarning("No checkpoint scene found.");
+        }
+    }
+
 }

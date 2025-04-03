@@ -28,6 +28,10 @@ public class MenuController : Menu
     [SerializeField] private Button loadGameButton;
     //[SerializeField] private SaveSlotsMenu SaveSlotsMenu;
 
+    // เพิ่มที่ด้านบนของ MenuController.cs
+    public enum GameDifficulty { Easy, Normal, Hard }
+    public static GameDifficulty selectedDifficulty = GameDifficulty.Normal;
+
     void Start()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("masterVolume", defaultVolume);
@@ -55,19 +59,23 @@ public class MenuController : Menu
 
     public void OnNewGameEasyGameClicked()
     {
+        selectedDifficulty = GameDifficulty.Easy;
         saveSlotsMenu.ActivateMenu(false);
         this.DeactivateMenu();
-
     }
 
     public void OnNewGameNomalGameClicked()
     {
-
+        selectedDifficulty = GameDifficulty.Normal;
+        saveSlotsMenu.ActivateMenu(false);
+        this.DeactivateMenu();
     }
 
     public void OnNewGameHardGameClicked()
     {
-
+        selectedDifficulty = GameDifficulty.Hard;
+        saveSlotsMenu.ActivateMenu(false);
+        this.DeactivateMenu();
     }
 
     public void OnLoadGameClicked()
@@ -80,7 +88,17 @@ public class MenuController : Menu
     {
         DisableMenuButtons();
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadSceneAsync("LABzone1");
+
+        string lastScene = DataPersistenceManager.instance.GetLastSceneName();
+        if (!string.IsNullOrEmpty(lastScene))
+        {
+            SceneManager.LoadSceneAsync(lastScene);
+        }
+        else
+        {
+            Debug.LogWarning("No last scene saved. Loading default.");
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
     }
 
     private void DisableMenuButtons()
@@ -163,4 +181,20 @@ public class MenuController : Menu
     {
         this.gameObject.SetActive(false);
     }
+
+    public void OnContinueFromCheckpoint()
+    {
+        var data = DataPersistenceManager.instance.gameData;
+
+        if (!string.IsNullOrEmpty(data.lastCheckpointScene))
+        {
+            SceneManager.LoadSceneAsync(data.lastCheckpointScene);
+            // เมื่อโหลดเสร็จแล้ว, SetPlayerPosition() จะวาง Player ตามตำแหน่งที่บันทึกไว้
+        }
+        else
+        {
+            Debug.LogWarning("No checkpoint scene found.");
+        }
+    }
+
 }

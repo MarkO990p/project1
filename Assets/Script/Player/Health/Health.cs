@@ -1,10 +1,12 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDataPersistence
 {
+    public int maxHealth = 100;
+
     [Header("Health & Armor")]
     [SerializeField] private float startingHealth;
     [SerializeField] private float startingArmor;
@@ -183,4 +185,51 @@ public class Health : MonoBehaviour, IDataPersistence
         if (dead) return;
         currentHealth = Mathf.Clamp(currentHealth + val, 0, startingHealth);
     }
+
+    public int armor = 0;
+
+    public void AddArmor(int amount)
+    {
+        armor += amount;
+        Debug.Log($"Armor added: {amount}. Current armor: {armor}");
+    }
+
+    public void AddArmor(float amount)
+    {
+        currentArmor += amount;
+        currentArmor = Mathf.Clamp(currentArmor, 0, startingArmor); // จำกัดไม่ให้เกินค่าตั้งต้น
+        Debug.Log("Added armor: " + amount + ". Current armor: " + currentArmor);
+        //UpdateShieldImage(); // อัปเดต UI เกราะทันที
+    }
+
+    public void AddHealth(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, startingHealth); // จำกัดไม่ให้เกินค่าตั้งต้น
+        Debug.Log("Added health: " + amount + ". Current health: " + currentHealth);
+    }
+
+    public void SetArmor(float armor)
+    {
+        currentArmor = Mathf.Clamp(armor, 0, startingArmor); // จำกัดไม่ให้เกินค่าเริ่มต้น
+        Debug.Log("Armor set to: " + currentArmor);
+        //UpdateShieldImage(); // อัปเดต UI ด้วย
+    }
+
+    public void SetMaxHealth(float newMaxHealth)
+    {
+        startingHealth = Mathf.Max(1f, newMaxHealth); // ป้องกันค่าติดลบหรือศูนย์
+        currentHealth = Mathf.Clamp(currentHealth, 0, startingHealth);
+        Debug.Log("Max Health set to: " + startingHealth + ". Current Health: " + currentHealth);
+    }
+
+
+    public float MaxHealth => startingHealth;
+
+    public void ResetHealthAfterRespawn(int percent = 50)
+    {
+        currentHealth = Mathf.Clamp((maxHealth * percent) / 100, 1, maxHealth);
+        Debug.Log($"Player health after respawn: {currentHealth}");
+    }
+
 }

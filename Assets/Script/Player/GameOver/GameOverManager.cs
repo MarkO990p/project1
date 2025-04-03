@@ -4,52 +4,68 @@ using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
-    public GameObject gameOverPanel; // แผง GameOver ที่จะปรากฏขึ้น
-    public Button respawnButton;     // อ้างอิงไปยังปุ่ม Respawn
-    public Button mainMenuButton;    // อ้างอิงไปยังปุ่ม Main Menu
-    public RespawnManager respawnManager; // อ้างอิงถึง RespawnManager
-    private Health playerHealth;     // อ้างอิงถึง Health ของผู้เล่น
+    public GameObject gameOverPanel;
+    public Button respawnButton;
+    public Button mainMenuButton;
+    public RespawnManager respawnManager;
+
+    private Health playerHealth;
 
     void Start()
     {
+        // หา RespawnManager อัตโนมัติถ้าไม่เซ็ตจาก Inspector
+        if (respawnManager == null)
+        {
+            respawnManager = FindObjectOfType<RespawnManager>();
+            if (respawnManager == null)
+            {
+                Debug.LogWarning("RespawnManager not found in scene!");
+            }
+        }
+
+        // ผูกฟังก์ชันให้ปุ่มทำงาน
         if (respawnButton != null)
             respawnButton.onClick.AddListener(Respawn);
 
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(GoToMainMenu);
 
-        gameOverPanel.SetActive(false); // ซ่อนแผง GameOver ตอนเริ่มต้น
-
-        // หา Health ของผู้เล่น
-        playerHealth = FindObjectOfType<Health>();
+        // ปิด Panel ตอนเริ่มเกม
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
     }
+
+
 
     public void TriggerGameOver()
     {
-        gameOverPanel.SetActive(true); // แสดงแผง GameOver
-        Time.timeScale = 0f; // หยุดเวลาในเกม
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
-    // ฟังก์ชันสำหรับเกิดใหม่
     void Respawn()
     {
-        gameOverPanel.SetActive(false); // ซ่อนแผง GameOver
-        Time.timeScale = 1f; // เริ่มเกมใหม่
+        Debug.Log("Trying to Respawn...");
 
-        if (respawnManager != null)
+        if (respawnManager == null)
         {
-            respawnManager.RespawnPlayer(); // เรียกใช้ RespawnPlayer จาก RespawnManager
+            respawnManager = FindObjectOfType<RespawnManager>();
+            if (respawnManager == null)
+            {
+                Debug.LogError("RespawnManager NOT FOUND!");
+                return;
+            }
         }
-        else
-        {
-            Debug.LogError("RespawnManager is not assigned in GameOverManager!");
-        }
+
+        Debug.Log("RespawnManager FOUND. Respawning...");
+        respawnManager.RespawnPlayer();
+        gameOverPanel.SetActive(false);
     }
 
-    // ฟังก์ชันสำหรับไปยังเมนูหลัก
+
     void GoToMainMenu()
     {
-        Time.timeScale = 1f; // ให้เกมเริ่มเดินต่อ
-        SceneManager.LoadScene("MainMenu"); // โหลด Scene ของเมนูหลัก
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 }

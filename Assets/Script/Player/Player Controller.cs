@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             playerAttributesSO.strength = data.playerAttributesData.strength;
             playerAttributesSO.intellect = data.playerAttributesData.intellect;
             playerAttributesSO.endurance = data.playerAttributesData.endurance;
+
+            //DataPersistenceManager.instance.LoadGame();
         }
     }
 
@@ -99,7 +101,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         data.playerAttributesData.strength = playerAttributesSO.strength;
         data.playerAttributesData.intellect = playerAttributesSO.intellect;
         data.playerAttributesData.endurance = playerAttributesSO.endurance;
-        
+
+        //DataPersistenceManager.instance.SaveGame();
+
     }
 
 
@@ -126,8 +130,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         CheckDash();
         CheckDropDown();
 
-        // บันทึกข้อมูลเกม
-        DataPersistenceManager.instance.SaveGame();
+        //// บันทึกข้อมูลเกม
+        //DataPersistenceManager.instance.SaveGame();
     }
 
 

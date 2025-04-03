@@ -108,21 +108,25 @@ public class FileDataHandler
     public void Delete(string profileId)
     {
         string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
-        if (File.Exists(fullPath))
+        string backupPath = fullPath + backupExtension; // เพิ่มบรรทัดนี้
+
+        try
         {
-            try
+            if (File.Exists(fullPath))
             {
-                File.Delete(fullPath);  // ลบไฟล์ข้อมูลโปรไฟล์
-                Debug.Log($"Deleted profile data for {profileId}");
+                File.Delete(fullPath); // ลบไฟล์หลัก
             }
-            catch (Exception e)
+
+            // ลบไฟล์สำรอง (ถ้ามี)
+            if (File.Exists(backupPath))
             {
-                Debug.LogError($"Failed to delete profile data for {profileId}: {e.Message}");
+                File.Delete(backupPath);
+                Debug.Log($"Deleted backup data for {profileId}");
             }
         }
-        else
+        catch (Exception e)
         {
-            Debug.LogWarning($"Profile data for {profileId} not found.");
+            Debug.LogError($"Failed to delete data for {profileId}: {e.Message}");
         }
     }
 

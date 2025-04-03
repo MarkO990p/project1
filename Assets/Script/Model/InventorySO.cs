@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,25 +28,24 @@ namespace Inventory.Model
 
         public int AddItem(ItemSo item, int quantity)
         {
-            if(item.IsStackable == false)
+            if (item.IsStackable == false)
             {
                 for (int i = 0; i < inventoryItems.Count; i++)
                 {
-                    while(quantity > 0 && IsInventoryFull() == false)
+                    while (quantity > 0 && IsInventoryFull() == false)
                     {
                         quantity -= AddItemTOFirstFreeSlot(item, 1);
                     }
-                    InformAboutChange();
-                    return quantity;
-
                 }
-
+                InformAboutChange();  // เรียก InformAboutChange() หลังจากการเพิ่มเสร็จ
+                return quantity;  // ให้ return ที่นี่หลังจากสิ้นสุดลูป
             }
+
             quantity = AddStackableItem(item, quantity);
             InformAboutChange();
             return quantity;
-            
         }
+
 
         private int AddItemTOFirstFreeSlot(ItemSo item, int quantity)
         {

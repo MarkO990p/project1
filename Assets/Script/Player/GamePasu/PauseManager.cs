@@ -31,7 +31,7 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        DataPersistenceManager.instance.SaveGame();
+        //DataPersistenceManager.instance.SaveGame();
 
         // ตรวจสอบการกดปุ่ม Esc เพื่อสลับสถานะหยุด/เริ่มเกม
         if (Input.GetKeyDown(KeyCode.Escape))

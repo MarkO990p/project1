@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SaveSlot : MonoBehaviour
 {
@@ -32,11 +33,11 @@ public class SaveSlot : MonoBehaviour
 
     public void SetData(GameData data, string sceneName)
     {
-        // ตรวจสอบว่าชื่อ Scene ไม่เป็นค่าว่าง
+        // ถ้า sceneName ว่างเปล่าให้ใช้ค่า default
         if (string.IsNullOrEmpty(sceneName))
         {
-            Debug.LogError("Scene name is empty or null for SaveSlot!");
-            return;
+            Debug.LogWarning("Scene name is empty. Defaulting to MainMenu.");
+            sceneName = "MainMenu";  // Default scene name
         }
 
         this.sceneName = sceneName;  // ตั้งค่า sceneName
@@ -62,6 +63,7 @@ public class SaveSlot : MonoBehaviour
         }
     }
 
+
     public string GetProfileId()
     {
         return this.profileId;
@@ -77,4 +79,19 @@ public class SaveSlot : MonoBehaviour
         saveSlotButton.interactable = interactable;
         clearButton.interactable = interactable;
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // เมื่อ Scene ถูกโหลด, ให้บันทึกข้อมูล Scene ที่ถูกโหลดนั้น
+        SaveCurrentSceneData(scene.name);
+    }
+
+    private void SaveCurrentSceneData(string sceneName)
+    {
+        // บันทึกข้อมูลทุกครั้งที่ Scene เปลี่ยน
+        DataPersistenceManager.instance.gameData.lastSceneName = sceneName; // ตั้งค่า sceneName ใน GameData
+        DataPersistenceManager.instance.SaveGame(); // บันทึกข้อมูลที่อัพเดต
+        Debug.Log($"Game saved for scene: {sceneName}");
+    }
+
 }

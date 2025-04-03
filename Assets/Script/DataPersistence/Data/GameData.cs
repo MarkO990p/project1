@@ -5,6 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public float maxHealth;
+    public float maxArmor;
+
+    public MenuController.GameDifficulty gameDifficulty;
+
+    public string lastCheckpointScene;
+    public string lastCheckpointId;
+    public Vector3 lastCheckpointPosition;
+
     public Vector3 playerPosition;
     public long lastUpdated;
     public int deathCount;

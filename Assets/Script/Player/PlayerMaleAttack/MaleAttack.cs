@@ -1,4 +1,4 @@
-using System.Collections;  // เพิ่มบรรทัดนี้สำหรับ IEnumerator และ Coroutine
+using System.Collections;
 using UnityEngine;
 
 public class MaleAttack : MonoBehaviour
@@ -10,6 +10,7 @@ public class MaleAttack : MonoBehaviour
 
     private Animator animator;
     private bool isAttacking;                // สถานะการโจมตี
+    private bool isPowerUpActive;            // ตรวจสอบว่า Power-Up ใช้งานอยู่หรือไม่
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class MaleAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && !isAttacking) // เมื่อกดปุ่ม K เพื่อโจมตี และตัวละครไม่ได้อยู่ในสถานะการโจมตี
+        if (Input.GetKeyDown(KeyCode.K) && !isAttacking) // เมื่อกดปุ่ม K เพื่อโจมตี
         {
             Attack();
         }
@@ -56,6 +57,20 @@ public class MaleAttack : MonoBehaviour
         // ตั้งค่า isAttacking เป็น false และตั้งค่า Animator กลับไปเป็น false เพื่อหยุดแอนิเมชัน
         isAttacking = false;
         animator.SetBool("isAttacking", false);
+    }
+
+    // ฟังก์ชันเพิ่มพลังโจมตี
+    public void AddAttackPower(int amount)
+    {
+        attackDamage += amount;  // เพิ่มความเสียหายในการโจมตี
+        Debug.Log("Attack Power Boosted! New Attack Damage: " + attackDamage);
+    }
+
+    // ฟังก์ชันลบพลังโจมตี
+    public void RemoveAttackPower(int amount)
+    {
+        attackDamage -= amount;  // คืนค่าความเสียหายในการโจมตี
+        Debug.Log("Attack Power Expired. New Attack Damage: " + attackDamage);
     }
 
     void OnDrawGizmosSelected()
