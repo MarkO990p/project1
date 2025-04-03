@@ -277,20 +277,22 @@ public class DataPersistenceManager : MonoBehaviour
         if (player != null && gameData != null)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
-            Vector3 scenePosition = gameData.GetPlayerPositionForScene(currentSceneName);
-            player.transform.position = scenePosition;
 
-            Debug.Log($"[LOAD] Loaded player position for {currentSceneName}: {scenePosition}");
-        }
-        else
-        {
-            if (player == null)
-                Debug.LogError("Player GameObject not found!");
-
-            if (gameData == null)
-                Debug.LogError("gameData is null!");
+            // ✅ ถ้าโหลดจาก Checkpoint
+            if (gameData.lastCheckpointScene == currentSceneName && gameData.lastCheckpointPosition != Vector3.zero)
+            {
+                player.transform.position = gameData.lastCheckpointPosition;
+                Debug.Log($"[LOAD] Loaded player from checkpoint: {gameData.lastCheckpointPosition}");
+            }
+            else
+            {
+                Vector3 scenePosition = gameData.GetPlayerPositionForScene(currentSceneName);
+                player.transform.position = scenePosition;
+                Debug.Log($"[LOAD] Loaded player from scene position: {scenePosition}");
+            }
         }
     }
+
 
     public Dictionary<string, GameData> GetAllProfilesGameDataFromFile()
     {

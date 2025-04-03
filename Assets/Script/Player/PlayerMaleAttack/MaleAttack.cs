@@ -81,4 +81,13 @@ public class MaleAttack : MonoBehaviour
         // วาดวงกลมใน Scene View เพื่อแสดงระยะการโจมตี
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
+    public void CancelAttackState()
+    {
+        isAttacking = false;
+        isPowerUpActive = false;
+        if (animator != null)
+            animator.SetBool("isAttacking", false);
+    }
+
 }

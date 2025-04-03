@@ -1,4 +1,4 @@
-using Inventory.Model;
+﻿using Inventory.Model;
 using Inventory.UI;
 using System;
 using System.Collections;
@@ -9,6 +9,9 @@ namespace Inventory
 {
     public class InventoryController : MonoBehaviour
     {
+        public InventorySO InventoryData => inventoryData;
+        public UIInventoryPage InventoryUI => inventoryUI;
+
         [SerializeField]
         private UIInventoryPage inventoryUI;
 

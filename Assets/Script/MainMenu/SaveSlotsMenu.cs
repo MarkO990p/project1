@@ -159,7 +159,7 @@ public class SaveSlotsMenu : Menu
             // กำหนด sceneName ถ้าไม่มี ให้ใช้ค่า default
             string sceneName = profileData != null && !string.IsNullOrEmpty(profileData.lastSceneName)
                 ? profileData.lastSceneName
-                : "LABzone1";  // Default scene name
+                : "EasyGame";  // Default scene name
 
             // ส่งข้อมูลไปยัง SaveSlot
             saveSlot.SetData(profileData, sceneName);
