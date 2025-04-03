@@ -112,24 +112,11 @@ public class Health : MonoBehaviour, IDataPersistence
 
         if (isPlayer)
         {
-            if (playerController != null)
-            {
-                playerController.enabled = false;
-            }
-
-            if (rb != null)
-            {
-                rb.velocity = Vector2.zero;
-                rb.bodyType = RigidbodyType2D.Static;
-            }
-
             GameOverManager gameOverManager = FindObjectOfType<GameOverManager>();
             if (gameOverManager != null)
             {
                 gameOverManager.TriggerGameOver();
             }
-
-            DisableAllComponents();
         }
         else
         {
