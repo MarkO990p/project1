@@ -1,0 +1,65 @@
+{
+    "PushAgent2D": {
+        "checkpoints": [
+            {
+                "steps": 499980,
+                "file_path": "results\\push1\\PushAgent2D\\PushAgent2D-499980.onnx",
+                "reward": null,
+                "creation_time": 1745426397.2765613,
+                "auxillary_file_paths": [
+                    "results\\push1\\PushAgent2D\\PushAgent2D-499980.pt"
+                ]
+            },
+            {
+                "steps": 549942,
+                "file_path": "results\\push1\\PushAgent2D\\PushAgent2D-549942.onnx",
+                "reward": null,
+                "creation_time": 1745426849.9477608,
+                "auxillary_file_paths": [
+                    "results\\push1\\PushAgent2D\\PushAgent2D-549942.pt"
+                ]
+            },
+            {
+                "steps": 599990,
+                "file_path": "results\\push1\\PushAgent2D\\PushAgent2D-599990.onnx",
+                "reward": null,
+                "creation_time": 1745427300.7221625,
+                "auxillary_file_paths": [
+                    "results\\push1\\PushAgent2D\\PushAgent2D-599990.pt"
+                ]
+            },
+            {
+                "steps": 649974,
+                "file_path": "results\\push1\\PushAgent2D\\PushAgent2D-649974.onnx",
+                "reward": null,
+                "creation_time": 1745427746.9628959,
+                "auxillary_file_paths": [
+                    "results\\push1\\PushAgent2D\\PushAgent2D-649974.pt"
+                ]
+            },
+            {
+                "steps": 678976,
+                "file_path": "results\\push1\\PushAgent2D\\PushAgent2D-678976.onnx",
+                "reward": null,
+                "creation_time": 1745428083.8073792,
+                "auxillary_file_paths": [
+                    "results\\push1\\PushAgent2D\\PushAgent2D-678976.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 678976,
+            "file_path": "results\\push1\\PushAgent2D.onnx",
+            "reward": null,
+            "creation_time": 1745428083.8073792,
+            "auxillary_file_paths": [
+                "results\\push1\\PushAgent2D\\PushAgent2D-678976.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.6.0+cu118"
+    }
+}

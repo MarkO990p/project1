@@ -140371,7 +140371,7 @@ MonoBehaviour:
     m_Bits: 64
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   moveSpeed: 3
   pushForce: 8
   pushDistanceThreshold: 1.2
@@ -140402,7 +140402,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 8f5791c59ca60034992e9311dbf9d9fa, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PushAgent2D
@@ -140481,7 +140481,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!224 &5703753498309465781
 RectTransform:
   m_ObjectHideFlags: 0
