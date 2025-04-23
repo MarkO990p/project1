@@ -1,0 +1,51 @@
+{
+    "EnemyShooter": {
+        "checkpoints": [
+            {
+                "steps": 2326,
+                "file_path": "results\\shooter1\\EnemyShooter\\EnemyShooter-2326.onnx",
+                "reward": -2.6500001586973667,
+                "creation_time": 1745433988.649835,
+                "auxillary_file_paths": [
+                    "results\\shooter1\\EnemyShooter\\EnemyShooter-2326.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2326,
+            "file_path": "results\\shooter1\\EnemyShooter.onnx",
+            "reward": -2.6500001586973667,
+            "creation_time": 1745433988.649835,
+            "auxillary_file_paths": [
+                "results\\shooter1\\EnemyShooter\\EnemyShooter-2326.pt"
+            ]
+        }
+    },
+    "PushAgent2D": {
+        "checkpoints": [
+            {
+                "steps": 4608,
+                "file_path": "results\\shooter1\\PushAgent2D\\PushAgent2D-4608.onnx",
+                "reward": null,
+                "creation_time": 1745433988.7151344,
+                "auxillary_file_paths": [
+                    "results\\shooter1\\PushAgent2D\\PushAgent2D-4608.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 4608,
+            "file_path": "results\\shooter1\\PushAgent2D.onnx",
+            "reward": null,
+            "creation_time": 1745433988.7151344,
+            "auxillary_file_paths": [
+                "results\\shooter1\\PushAgent2D\\PushAgent2D-4608.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.6.0+cu118"
+    }
+}

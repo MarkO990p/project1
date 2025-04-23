@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8959173197772711187}
   - component: {fileID: 7781608967166478373}
   - component: {fileID: 7492639960054388640}
-  - component: {fileID: 4461888026097105019}
+  - component: {fileID: 1087694059915798070}
   m_Layer: 0
   m_Name: BulletAgent
   m_TagString: Obstacle
@@ -181,7 +181,7 @@ PolygonCollider2D:
       - {x: 0.29296875, y: 0.90234375}
       - {x: 0.15234375, y: 0.97265625}
   m_UseDelaunayMesh: 0
---- !u!114 &4461888026097105019
+--- !u!114 &1087694059915798070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,9 +190,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7692498484431533179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43576900ae655041859307872dc3b96, type: 3}
+  m_Script: {fileID: 11500000, guid: 1edb83db1f3feab4e94701393dda0d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooter: {fileID: 0}
-  lifetime: 3
+  speed: 10
+  lifetime: 2
   damage: 10
+  ownerAgent: {fileID: 0}
+  facingCorrect: 0
