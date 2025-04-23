@@ -26,6 +26,9 @@ public class MenuController : Menu
     [SerializeField] private Button newGameHardButton;
     [SerializeField] private Button continueGameButton;
     [SerializeField] private Button loadGameButton;
+
+    [SerializeField] private string normalGameSceneName = "NormalGame";
+    [SerializeField] private string hardGameSceneName = "HardGame";
     //[SerializeField] private SaveSlotsMenu SaveSlotsMenu;
 
     // เพิ่มที่ด้านบนของ MenuController.cs
@@ -67,15 +70,13 @@ public class MenuController : Menu
     public void OnNewGameNomalGameClicked()
     {
         selectedDifficulty = GameDifficulty.Normal;
-        saveSlotsMenu.ActivateMenu(false);
-        this.DeactivateMenu();
+        SceneManager.LoadSceneAsync(normalGameSceneName);
     }
 
     public void OnNewGameHardGameClicked()
     {
         selectedDifficulty = GameDifficulty.Hard;
-        saveSlotsMenu.ActivateMenu(false);
-        this.DeactivateMenu();
+        SceneManager.LoadSceneAsync(hardGameSceneName);
     }
 
     public void OnLoadGameClicked()
