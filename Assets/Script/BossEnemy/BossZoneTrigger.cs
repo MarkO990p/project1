@@ -3,15 +3,15 @@ using UnityEngine;
 public class BossZoneTrigger : MonoBehaviour
 {
     public GameObject boss;
-    public DoorController2D leftDoor;   // แก้เป็น DoorController2D
-    public DoorController2D rightDoor;
+    public DoorCon leftDoor;  // อ้างอิงไปยัง DoorCon ของประตูซ้าย
+    public DoorCon rightDoor; // อ้างอิงไปยัง DoorCon ของประตูขวา
 
     private Boss bossScript;
 
     private void Start()
     {
         bossScript = boss.GetComponent<Boss>();
-        bossScript.IsActive = false;
+        bossScript.IsActive = false;  // เริ่มต้นให้บอสไม่ทำงาน
         Debug.Log("BossZoneTrigger initialized and boss script disabled.");
     }
 
@@ -24,7 +24,7 @@ public class BossZoneTrigger : MonoBehaviour
 
             if (bossScript != null)
             {
-                bossScript.ActivateBoss();
+                bossScript.ActivateBoss();  // เปิดใช้งานบอสเมื่อผู้เล่นเข้ามาในพื้นที่
                 Debug.Log("Boss starts attacking.");
             }
         }
@@ -33,14 +33,14 @@ public class BossZoneTrigger : MonoBehaviour
     public void OnBossDefeated()
     {
         Debug.Log("Boss defeated! Opening doors.");
-        leftDoor.OpenDoor();
-        rightDoor.OpenDoor();
+        StartCoroutine(leftDoor.OpenDoor());
+        StartCoroutine(rightDoor.OpenDoor());
     }
 
     private void CloseDoors()
     {
-        leftDoor.CloseDoor();
-        rightDoor.CloseDoor();
+        StartCoroutine(leftDoor.CloseDoor());
+        StartCoroutine(rightDoor.CloseDoor());
         Debug.Log("Both doors are closing.");
     }
 }

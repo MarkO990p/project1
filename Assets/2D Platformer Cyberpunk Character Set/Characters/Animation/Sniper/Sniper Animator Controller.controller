@@ -89,52 +89,51 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -9140949310354227221}
-    m_Position: {x: 500, y: 190, z: 0}
+    m_Position: {x: 509.98022, y: 314.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4464083354492924984}
-    m_Position: {x: 30, y: -80, z: 0}
+    m_Position: {x: 519.9802, y: 324.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 906014366529519211}
-    m_Position: {x: 710, y: 240, z: 0}
+    m_Position: {x: 529.9802, y: 334.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4427719224121757082}
-    m_Position: {x: 710, y: 290, z: 0}
+    m_Position: {x: 539.9802, y: 344.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1016299034724636551}
-    m_Position: {x: 280, y: 120, z: 0}
+    m_Position: {x: 549.9802, y: 354.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8224048631602364417}
-    m_Position: {x: 500, y: 240, z: 0}
+    m_Position: {x: 559.9802, y: 364.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9000763242696956773}
-    m_Position: {x: 500, y: 290, z: 0}
+    m_Position: {x: 569.9802, y: 374.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8787352465531000922}
-    m_Position: {x: 710, y: 340, z: 0}
+    m_Position: {x: 579.9802, y: 384.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4431924021416754106}
-    m_Position: {x: 500, y: 340, z: 0}
+    m_Position: {x: 589.9802, y: 394.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7817334079429402127}
-    m_Position: {x: 500, y: 390, z: 0}
+    m_Position: {x: 599.9802, y: 404.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4851286527516745034}
-    m_Position: {x: 710, y: 390, z: 0}
+    m_Position: {x: 609.9802, y: 414.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2865128273089195845}
-    m_Position: {x: 500, y: 440, z: 0}
+    m_Position: {x: 619.9802, y: 424.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 390779363647633515}
-    m_Position: {x: 290, y: 210, z: 0}
+    m_Position: {x: 629.9802, y: 434.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3747426031285996388}
-    m_Position: {x: 500, y: 490, z: 0}
+    m_Position: {x: 639.9802, y: 444.82623, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3952709203611586196}
-    m_Position: {x: 710, y: 440, z: 0}
+    m_Position: {x: 649.9802, y: 454.82623, z: 0}
   m_ChildStateMachines: []
-  m_AnyStateTransitions:
-  - {fileID: -7666661024309722334}
+  m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -142,7 +141,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1016299034724636551}
+  m_DefaultState: {fileID: -9140949310354227221}
 --- !u!1102 &-7817334079429402127
 AnimatorState:
   serializedVersion: 6
@@ -169,31 +168,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &-7666661024309722334
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: die
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -4464083354492924984}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.000000012336041
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1102 &-4851286527516745034
 AnimatorState:
   serializedVersion: 6
@@ -358,13 +332,7 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Sniper Animator Controller
   serializedVersion: 5
-  m_AnimatorParameters:
-  - m_Name: die
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+  m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

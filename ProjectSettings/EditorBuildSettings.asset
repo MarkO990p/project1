@@ -11,12 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EasyGame.unity
     guid: 447ea6994e556e04087b2d80af7ea1be
-  - enabled: 1
-    path: Assets/Scenes/NormalGame.unity
-    guid: f0c81fc0319b54245a99c5fbff43bb38
-  - enabled: 1
-    path: Assets/Scenes/HardGame.unity
-    guid: 08c93c13118a2f24da2f7204d9e121d1
   - enabled: 0
     path: Assets/Scenes/LABzone1.unity
     guid: 067ed186c4e120e48a81a039ac9c8b8d
