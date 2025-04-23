@@ -5041,6 +5041,8 @@ MonoBehaviour:
   newGameHardButton: {fileID: 901148456}
   continueGameButton: {fileID: 1955250748}
   loadGameButton: {fileID: 1431165955}
+  normalGameSceneName: NormalGame
+  hardGameSceneName: HardGame
 --- !u!4 &1220099605
 Transform:
   m_ObjectHideFlags: 0
@@ -7024,54 +7026,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613311833}
   m_CullTransparentMesh: 1
---- !u!1 &1621615993
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1621615994}
-  - component: {fileID: 1621615995}
-  m_Layer: 0
-  m_Name: DifficultySelector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1621615994
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621615993}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.513184, y: 13.738065, z: 0.35200816}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1621615995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621615993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cddbd4a7d8dea4ab596e6492e05293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterDatas: []
-  easyBossHealth: 1000
-  mediumBossHealth: 2000
-  hardBossHealth: 3500
 --- !u!1 &1627769394
 GameObject:
   m_ObjectHideFlags: 0
@@ -8472,7 +8426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1955250747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8938,6 +8892,5 @@ SceneRoots:
   - {fileID: 1220099605}
   - {fileID: 1857412010}
   - {fileID: 879919571}
-  - {fileID: 1621615994}
   - {fileID: 300441984}
   - {fileID: 423066248}

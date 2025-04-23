@@ -73,8 +73,6 @@ public class RespawnManager : MonoBehaviour
 
     private IEnumerator RespawnCoroutine()
     {
-        yield return new WaitForSeconds(respawnDelay);
-
         if (currentRespawnPoint == null)
         {
             Debug.LogError("Current respawn point is not set!");
@@ -85,7 +83,7 @@ public class RespawnManager : MonoBehaviour
         player.transform.position = currentRespawnPoint.position;
         playerAnimator.SetTrigger("idle");
         playerRb.bodyType = RigidbodyType2D.Dynamic;
-
+        Time.timeScale = 1.0f;
         // เปิดใช้งานคอนโทรลต่างๆ
         if (playerController != null) playerController.enabled = true;
         if (playerShooting != null) playerShooting.enabled = true;
