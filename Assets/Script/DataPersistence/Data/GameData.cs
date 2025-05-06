@@ -36,6 +36,7 @@ public class GameData
         coinsCollected = new SerializableDictionary<string, bool>();
         currentHealth = 100;
         currentArmor = 100;
+        gameDifficulty = MenuController.selectedDifficulty;
         playerAttributesData = new AttributesData();
 
         lastSceneName = "Forestzone1";

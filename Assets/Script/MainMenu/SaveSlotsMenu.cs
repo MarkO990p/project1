@@ -41,7 +41,7 @@ public class SaveSlotsMenu : Menu
     public void OnSaveSlotClicked(SaveSlot saveSlot)
     {
         string sceneName = saveSlot.GetSceneName();  // ดึงชื่อ Scene จาก SaveSlot
-
+        Debug.Log("SCENENAME : " + sceneName);
         // ตรวจสอบให้แน่ใจว่า sceneName ไม่เป็นค่าว่าง
         if (string.IsNullOrEmpty(sceneName))
         {
@@ -57,7 +57,7 @@ public class SaveSlotsMenu : Menu
         {
             // เปลี่ยน profile ที่เลือกจาก SaveSlot
             DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-
+            Debug.Log("LOAD GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             // โหลดข้อมูลเกมและฉากที่ผู้เล่นเคยบันทึกไว้
             DataPersistenceManager.instance.LoadGame();  // โหลดข้อมูลจาก SaveSlot
             SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
@@ -78,6 +78,7 @@ public class SaveSlotsMenu : Menu
                     this.ActivateMenu(isLoadingGame);
                 }
             );
+            
         }
         // case - new game, and the save slot has no data
         else
@@ -86,6 +87,7 @@ public class SaveSlotsMenu : Menu
             DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
             DataPersistenceManager.instance.NewGame();
             SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
+            Debug.Log("NEW GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   : "+ sceneName);
         }
     }
 
@@ -140,7 +142,7 @@ public class SaveSlotsMenu : Menu
         this.DeactivateMenu();
     }
 
-    public void ActivateMenu(bool isLoadingGame)
+    public void ActivateMenu(bool isLoadingGame, string nameScene = null)
     {
         this.gameObject.SetActive(true);
         this.isLoadingGame = isLoadingGame;
@@ -157,9 +159,10 @@ public class SaveSlotsMenu : Menu
             profilesGameData.TryGetValue(saveSlot.GetProfileId(), out profileData);
 
             // กำหนด sceneName ถ้าไม่มี ให้ใช้ค่า default
+            Debug.Log("NAME SCENEE CHECK : " + nameScene);
             string sceneName = profileData != null && !string.IsNullOrEmpty(profileData.lastSceneName)
                 ? profileData.lastSceneName
-                : "EasyGame";  // Default scene name
+                : nameScene;  // Default scene name
 
             // ส่งข้อมูลไปยัง SaveSlot
             saveSlot.SetData(profileData, sceneName);

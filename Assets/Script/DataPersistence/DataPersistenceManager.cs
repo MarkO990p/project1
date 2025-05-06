@@ -133,7 +133,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.gameData = new GameData();
         this.gameData.gameDifficulty = MenuController.selectedDifficulty;
-
+        
         gameData.playerPosition = new Vector3(0, 0, 0);
         gameData.currentHealth = 100;
         gameData.currentArmor = 100;
@@ -168,6 +168,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         Debug.Log("Loaded game data: " + gameData.playerPosition);
+        Debug.Log("Loaded game Difficulty: " + gameData.gameDifficulty);
 
         SetPlayerPosition();
     }
@@ -236,7 +237,7 @@ public class DataPersistenceManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(autoSaveTimeSeconds);
-            SaveGame();
+            //SaveGame();
             Debug.Log("Auto Saved Game");
         }
     }

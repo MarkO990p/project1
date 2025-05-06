@@ -27,6 +27,7 @@ public class MenuController : Menu
     [SerializeField] private Button continueGameButton;
     [SerializeField] private Button loadGameButton;
 
+    [SerializeField] private string easyGameSceneName = "EasyGame";
     [SerializeField] private string normalGameSceneName = "NormalGame";
     [SerializeField] private string hardGameSceneName = "HardGame";
     //[SerializeField] private SaveSlotsMenu SaveSlotsMenu;
@@ -63,20 +64,26 @@ public class MenuController : Menu
     public void OnNewGameEasyGameClicked()
     {
         selectedDifficulty = GameDifficulty.Easy;
-        saveSlotsMenu.ActivateMenu(false);
+        saveSlotsMenu.ActivateMenu(false, "EasyGame");
         this.DeactivateMenu();
+
+        Debug.Log("PICKED EASY");
     }
 
     public void OnNewGameNomalGameClicked()
     {
         selectedDifficulty = GameDifficulty.Normal;
-        SceneManager.LoadSceneAsync(normalGameSceneName);
+        saveSlotsMenu.ActivateMenu(false, normalGameSceneName);
+        //SceneManager.LoadSceneAsync(normalGameSceneName);
+        Debug.Log("PICKED NORMAL");
     }
 
     public void OnNewGameHardGameClicked()
     {
         selectedDifficulty = GameDifficulty.Hard;
-        SceneManager.LoadSceneAsync(hardGameSceneName);
+        saveSlotsMenu.ActivateMenu(false, hardGameSceneName);
+        //SceneManager.LoadSceneAsync(hardGameSceneName);
+        Debug.Log("PICKED HARD");
     }
 
     public void OnLoadGameClicked()
