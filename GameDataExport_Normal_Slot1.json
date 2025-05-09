@@ -1,0 +1,41 @@
+{
+    "maxHealth": 0.0,
+    "maxArmor": 0.0,
+    "gameDifficulty": 1,
+    "lastCheckpointScene": "NormalGame",
+    "lastCheckpointId": "2",
+    "lastCheckpointPosition": {
+        "x": 231.205322265625,
+        "y": 34.04393005371094,
+        "z": -8.130000114440918
+    },
+    "playerPosition": {
+        "x": 231.20530700683595,
+        "y": 34.608909606933597,
+        "z": -8.130000114440918
+    },
+    "lastUpdated": -8584548179701693706,
+    "deathCount": 0,
+    "scenePositions": {
+        "keys": [
+            "NormalGame"
+        ],
+        "values": [
+            {
+                "x": -6.338159084320068,
+                "y": -0.06667369604110718,
+                "z": -0.008749023079872132
+            }
+        ]
+    },
+    "coinsCollected": {
+        "keys": [],
+        "values": []
+    },
+    "currentHealth": 100.0,
+    "currentArmor": 50.0,
+    "lastSceneName": "NormalGame",
+    "completedScenes": [
+        "NormalGame"
+    ]
+}
