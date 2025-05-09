@@ -16,8 +16,8 @@ public class SaveSlot : MonoBehaviour
     [Header("Content")]
     [SerializeField] private GameObject noDataContent;
     [SerializeField] private GameObject hasDataContent;
-    [SerializeField] private TextMeshProUGUI percentageCompleteText;
-    [SerializeField] private TextMeshProUGUI deathCountText;
+    [SerializeField] private TextMeshProUGUI _modeText;
+    [SerializeField] private TextMeshProUGUI checkPointText;
 
     [Header("Clear Data Button")]
     [SerializeField] private Button clearButton;
@@ -58,8 +58,8 @@ public class SaveSlot : MonoBehaviour
             hasDataContent.SetActive(true);
             clearButton.gameObject.SetActive(true);
 
-            percentageCompleteText.text = data.GetPercentageComplete() + "% COMPLETE";
-            deathCountText.text = "DEATH COUNT: " + data.deathCount;
+            _modeText.text = data.gameDifficulty.ToString();
+            checkPointText.text = "Check Point : " + data.lastCheckpointId;
         }
     }
 

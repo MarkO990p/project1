@@ -1,0 +1,31 @@
+{
+    "maxHealth": 0.0,
+    "maxArmor": 0.0,
+    "gameDifficulty": 1,
+    "lastCheckpointScene": "",
+    "lastCheckpointId": "",
+    "lastCheckpointPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "playerPosition": {
+        "x": -6.338159084320068,
+        "y": -0.03528165817260742,
+        "z": -0.008749023079872132
+    },
+    "lastUpdated": -8584549873129957928,
+    "deathCount": 0,
+    "scenePositions": {
+        "keys": [],
+        "values": []
+    },
+    "coinsCollected": {
+        "keys": [],
+        "values": []
+    },
+    "currentHealth": 100.0,
+    "currentArmor": 50.0,
+    "lastSceneName": "MainMenu",
+    "completedScenes": []
+}

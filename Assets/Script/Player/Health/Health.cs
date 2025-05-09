@@ -32,6 +32,8 @@ public class Health : MonoBehaviour, IDataPersistence
     {
         currentHealth = startingHealth;
         currentArmor = startingArmor;
+        Debug.Log("Check Starting H " + startingHealth);
+        Debug.Log("Check Starting A" + startingArmor);
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -51,8 +53,11 @@ public class Health : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
+
+        Debug.Log("Check " + currentArmor);
         data.currentHealth = this.currentHealth;
         data.currentArmor = this.currentArmor;
+        Debug.Log("Check Second : " + data.currentArmor);
     }
 
     public void TakeDamage(float damage)

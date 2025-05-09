@@ -5041,6 +5041,7 @@ MonoBehaviour:
   newGameHardButton: {fileID: 901148456}
   continueGameButton: {fileID: 1955250748}
   loadGameButton: {fileID: 1431165955}
+  easyGameSceneName: EasyGame
   normalGameSceneName: NormalGame
   hardGameSceneName: HardGame
 --- !u!4 &1220099605
