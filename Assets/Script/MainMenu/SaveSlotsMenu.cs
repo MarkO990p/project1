@@ -128,6 +128,7 @@ public class SaveSlotsMenu : Menu
             "Are you sure you want to delete this saved data?",
             () => {
                 DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileId());
+                DataPersistenceManager.instance.ClearSave(saveSlot.GetProfileId());
                 ActivateMenu(isLoadingGame);
             },
             () => {

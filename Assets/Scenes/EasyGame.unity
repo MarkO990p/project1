@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1792d3c64feff4996a36258067d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointId: 
+  checkpointId: 1
 --- !u!61 &160107599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13223,7 +13223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1792d3c64feff4996a36258067d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointId: 
+  checkpointId: 3
 --- !u!61 &270082106
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54992,7 +54992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1792d3c64feff4996a36258067d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointId: 
+  checkpointId: 4
 --- !u!61 &971364938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55645,7 +55645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1792d3c64feff4996a36258067d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointId: 
+  checkpointId: 2
 --- !u!1 &1043752652
 GameObject:
   m_ObjectHideFlags: 0
@@ -134782,7 +134782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1792d3c64feff4996a36258067d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointId: 
+  checkpointId: 5
 --- !u!61 &2022209210
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,5 +18,7 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         data.playerPosition = transform.position; 
         data.currentHealth = playerHealth.GetCurrentHealth();
         data.currentArmor = playerHealth.GetCurrentArmor();
+        Debug.Log("IS IT USE HEREE 1st : "+ playerHealth.GetCurrentHealth());
+        Debug.Log("IS IT USE HEREE 2nd : "+ playerHealth.GetCurrentArmor());
     }
 }

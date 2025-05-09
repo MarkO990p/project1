@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class DataPersistenceManager : MonoBehaviour
     private string selectedProfileId = "";
 
     private Coroutine autoSaveCoroutine;
+
+    private int saveSlot;
 
     public static DataPersistenceManager instance { get; private set; }
 
@@ -201,17 +204,72 @@ public class DataPersistenceManager : MonoBehaviour
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(gameData);
+            Debug.Log("SAVE ?????? "+gameData.currentArmor);
         }
 
         gameData.lastUpdated = System.DateTime.Now.ToBinary();
 
         dataHandler.Save(gameData, selectedProfileId);
+        ExportGameDataToJson(selectedProfileId);
         Debug.Log("Game saved successfully.");
     }
 
     private void OnApplicationQuit()
     {
         SaveGame();
+    }
+    public void ExportGameDataToJson(string slotNumber)
+    {
+        if (gameData == null)
+        {
+            Debug.LogWarning("No game data to export.");
+            return;
+        }
+
+        string json = JsonUtility.ToJson(gameData, true);
+
+        // Define export path for the game folder (outside Application.dataPath)
+        string gameFolder = Directory.GetParent(Application.dataPath).FullName;  // Game folder (parent of data)
+        string difficultyName = gameData.gameDifficulty.ToString(); // "Easy"
+        string fileName = $"GameDataExport_{difficultyName}_Slot{slotNumber}.json";
+        string exportPath = Path.Combine(gameFolder, fileName);
+
+        File.WriteAllText(exportPath, json);
+        Debug.Log("Game data exported to JSON at: " + exportPath);
+
+        Debug.Log("SAVE SLOT NUMBER " + slotNumber);
+    }
+
+    public void ClearSave(string slot)
+    {
+        // Delete internal save file (your own save system path)
+        string saveFileName = $"Save_{gameData.gameDifficulty}_Slot{slot}.dat"; // Example save file
+        string savePath = Path.Combine(Application.persistentDataPath, saveFileName); // Save path
+
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+            Debug.Log($"Deleted save file: {savePath}");
+        }
+
+        // Delete exported JSON file
+        string gameFolder = Directory.GetParent(Application.dataPath).FullName; // Game folder (parent of data)
+        string exportFileName = $"GameDataExport_{gameData.gameDifficulty}_Slot{slot}.json";
+        string exportPath = Path.Combine(gameFolder, exportFileName);
+
+        if (File.Exists(exportPath))
+        {
+            File.Delete(exportPath);
+            Debug.Log($"Deleted exported data file: {exportPath}");
+        }
+        else
+        {
+            Debug.LogWarning($"Exported data file not found: {exportPath}");
+        }
+
+        Debug.Log($"Save and exported data for Slot {slot} cleared.");
+
+        Debug.Log("DELETED SLOT NUMBER " + slot);
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
