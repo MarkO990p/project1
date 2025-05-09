@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class SaveSlotsMenu : Menu
 {
@@ -55,12 +56,12 @@ public class SaveSlotsMenu : Menu
         // case - loading game
         if (isLoadingGame)
         {
+            DataPersistenceManager.isNewGame = false;
             // เปลี่ยน profile ที่เลือกจาก SaveSlot
             DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-            Debug.Log("LOAD GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             // โหลดข้อมูลเกมและฉากที่ผู้เล่นเคยบันทึกไว้
             DataPersistenceManager.instance.LoadGame();  // โหลดข้อมูลจาก SaveSlot
-            SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
+            SaveGameAndLoadScene(sceneName, DataPersistenceManager.isNewGame);  // ส่งชื่อ Scene ที่เลือกไป
         }
         // case - new game, but the save slot has data
         else if (saveSlot.hasData)
@@ -68,10 +69,11 @@ public class SaveSlotsMenu : Menu
             confirmationPopupMenu.ActivateMenu(
                 $"Starting a New Game ({MenuController.selectedDifficulty}) with this slot will override the currently saved data. Are you sure?",
                 () => {
+                    DataPersistenceManager.isNewGame = true;
                     // เปลี่ยน profile และเริ่มเกมใหม่
                     DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
                     DataPersistenceManager.instance.NewGame();
-                    SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
+                    SaveGameAndLoadScene(sceneName, DataPersistenceManager.isNewGame);  // ส่งชื่อ Scene ที่เลือกไป
                 },
                 () => {
                     // กลับไปที่เมนู SaveSlots
@@ -83,40 +85,47 @@ public class SaveSlotsMenu : Menu
         // case - new game, and the save slot has no data
         else
         {
+            DataPersistenceManager.isNewGame = true;
             // เริ่มเกมใหม่โดยไม่โหลดข้อมูล
             DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
             DataPersistenceManager.instance.NewGame();
-            SaveGameAndLoadScene(sceneName);  // ส่งชื่อ Scene ที่เลือกไป
+            SaveGameAndLoadScene(sceneName, DataPersistenceManager.isNewGame);  // ส่งชื่อ Scene ที่เลือกไป
             Debug.Log("NEW GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   : "+ sceneName);
         }
     }
 
 
-    private void SaveGameAndLoadScene(string sceneName)
+    private void SaveGameAndLoadScene(string sceneName, bool isLoadGame)
     {
-        // ตรวจสอบให้แน่ใจว่า sceneName ไม่เป็นค่าว่าง
         if (string.IsNullOrEmpty(sceneName))
         {
             Debug.LogError("Cannot load scene. Invalid scene name (empty string).");
             return;
         }
 
-        // บันทึกตำแหน่งของผู้เล่นก่อนโหลด Scene
+        // Save player position if player exists
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
-            // บันทึกข้อมูลเกมที่เกี่ยวข้องกับตำแหน่งผู้เล่นก่อนโหลด Scene
-            DataPersistenceManager.instance.SaveGame();  // Save the game anytime before loading a new scene
+            Vector3 currentPosition = player.transform.position;
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            // Store position for the current scene
+            DataPersistenceManager.instance.gameData.SetPlayerPositionForScene(currentScene, currentPosition);
+            Debug.Log($"Saved position: {currentPosition} for scene: {currentScene}");
         }
         else
         {
-            Debug.LogError("Player GameObject not found before saving game data.");
+            Debug.LogWarning("Player GameObject not found before saving game data.");
         }
 
-        // โหลดข้อมูลจาก SaveSlot ก่อนจะโหลดฉากใหม่
-        DataPersistenceManager.instance.LoadGame();  // โหลดข้อมูลจาก SaveSlot
+        // Save the game before loading
+        DataPersistenceManager.instance.SaveGame();
 
-        // โหลด Scene ตามชื่อที่ได้รับ
+        // ❌ REMOVE THIS: It overwrites the just-saved data
+        // DataPersistenceManager.instance.LoadGame();
+
+        // Load the new scene
         SceneManager.LoadSceneAsync(sceneName);
     }
 

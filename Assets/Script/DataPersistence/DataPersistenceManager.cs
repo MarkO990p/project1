@@ -7,7 +7,7 @@ using System.IO;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    
+
     [Header("Debugging")]
     [SerializeField] private bool disableDataPersistence = false;
     [SerializeField] private bool initializeDataIfNull = false;
@@ -32,6 +32,7 @@ public class DataPersistenceManager : MonoBehaviour
     private int saveSlot;
 
     public static DataPersistenceManager instance { get; private set; }
+    public static bool isNewGame = false;
 
 
     private void Awake()
@@ -90,7 +91,8 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
-        LoadGame();
+        if (!isNewGame)
+            LoadGame();
 
         if (autoSaveCoroutine != null)
         {
@@ -134,15 +136,23 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
+        // Create a fresh new game data object
         this.gameData = new GameData();
+
+        // Set default values
         this.gameData.gameDifficulty = MenuController.selectedDifficulty;
-        
-        gameData.playerPosition = new Vector3(0, 0, 0);
-        gameData.currentHealth = 100;
-        gameData.currentArmor = 100;
-        gameData.lastSceneName = "MainMenu";
-        gameData.completedScenes = new List<string>();
-        gameData.deathCount = 0;
+        this.gameData.playerPosition = new Vector3(0, 0, 0);
+        this.gameData.currentHealth = 100;
+        this.gameData.currentArmor = 100;
+        this.gameData.lastSceneName = "MainMenu";
+        this.gameData.completedScenes = new List<string>();
+        this.gameData.deathCount = 0;
+
+        // Immediately save this new game to override old save data
+        SaveGame();
+
+        // Optional: Flag this as a new game so scene loaders won't re-load saved data
+        isNewGame = true;
     }
 
     public void LoadGame()
@@ -204,7 +214,7 @@ public class DataPersistenceManager : MonoBehaviour
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(gameData);
-            Debug.Log("SAVE ?????? "+gameData.currentArmor);
+            Debug.Log("SAVE ?????? " + gameData.currentArmor);
         }
 
         gameData.lastUpdated = System.DateTime.Now.ToBinary();
@@ -364,6 +374,6 @@ public class DataPersistenceManager : MonoBehaviour
         return gameData;
     }
 
- 
+
 
 }
