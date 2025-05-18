@@ -19,7 +19,10 @@ public class AgentController2D_Hybrid : Agent
 
     [Header("Attack Settings")]
     public float attackDamage = 10f;
+    public float attackRange = 1.0f;
+    public float attackCooldown = 1.0f;
 
+    private float lastAttackTime = 0f;
     private float zoneMinX;
     private float zoneMaxX;
 
@@ -27,7 +30,7 @@ public class AgentController2D_Hybrid : Agent
     private float previousDistance;
     private int patrolDirection = 1;
 
-    private enum AgentState { Patrol, Chasing }
+    private enum AgentState { Patrol, Chasing, Attacking }
     private AgentState currentState = AgentState.Patrol;
 
     public override void Initialize()
@@ -46,6 +49,7 @@ public class AgentController2D_Hybrid : Agent
         patrolDirection = 1;
         previousDistance = Vector2.Distance(transform.position, player.position);
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        lastAttackTime = 0f;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -68,6 +72,9 @@ public class AgentController2D_Hybrid : Agent
                 break;
             case AgentState.Chasing:
                 ChasePlayer();
+                break;
+            case AgentState.Attacking:
+                AttackPlayer();
                 break;
         }
 
@@ -93,6 +100,25 @@ public class AgentController2D_Hybrid : Agent
         float currentDistance = Vector2.Distance(transform.position, player.position);
         AddReward((previousDistance - currentDistance) * 0.01f);
         previousDistance = currentDistance;
+    }
+
+    private void AttackPlayer()
+    {
+        // หยุดการเคลื่อนไหว
+        rb.velocity = Vector2.zero;
+
+        float distance = Vector2.Distance(transform.position, player.position);
+        if (distance <= attackRange && Time.time - lastAttackTime >= attackCooldown)
+        {
+            Health playerHealth = player.GetComponent<Health>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(attackDamage);
+                Debug.Log($"[Agent Dagger] Attacked {player.name}, dealt {attackDamage} damage.");
+                AddReward(1f);
+                lastAttackTime = Time.time;
+            }
+        }
     }
 
     private void Move(float direction)
@@ -132,7 +158,11 @@ public class AgentController2D_Hybrid : Agent
             return;
         }
 
-        if (distance < 10f && verticalDiff < 1.0f)
+        if (distance < attackRange && verticalDiff < 1.0f)
+        {
+            currentState = AgentState.Attacking;
+        }
+        else if (distance < 10f && verticalDiff < 1.0f)
         {
             currentState = AgentState.Chasing;
         }
@@ -145,20 +175,6 @@ public class AgentController2D_Hybrid : Agent
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Health playerHealth = other.GetComponent<Health>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(attackDamage);
-                Debug.Log($"[Agent] Touch attack on {other.name}, dealt {attackDamage} damage.");
-                AddReward(1f);
-            }
-        }
     }
 
     private void OnDrawGizmos()

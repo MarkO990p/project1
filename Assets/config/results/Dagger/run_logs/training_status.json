@@ -1,0 +1,73 @@
+{
+    "PushAgent2D": {
+        "checkpoints": [
+            {
+                "steps": 48000,
+                "file_path": "results\\Dagger\\PushAgent2D\\PushAgent2D-48000.onnx",
+                "reward": null,
+                "creation_time": 1747494644.2393546,
+                "auxillary_file_paths": [
+                    "results\\Dagger\\PushAgent2D\\PushAgent2D-48000.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 48000,
+            "file_path": "results\\Dagger\\PushAgent2D.onnx",
+            "reward": null,
+            "creation_time": 1747494644.2393546,
+            "auxillary_file_paths": [
+                "results\\Dagger\\PushAgent2D\\PushAgent2D-48000.pt"
+            ]
+        }
+    },
+    "EnemyShooter": {
+        "checkpoints": [
+            {
+                "steps": 48000,
+                "file_path": "results\\Dagger\\EnemyShooter\\EnemyShooter-48000.onnx",
+                "reward": null,
+                "creation_time": 1747494644.3173978,
+                "auxillary_file_paths": [
+                    "results\\Dagger\\EnemyShooter\\EnemyShooter-48000.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 48000,
+            "file_path": "results\\Dagger\\EnemyShooter.onnx",
+            "reward": null,
+            "creation_time": 1747494644.3173978,
+            "auxillary_file_paths": [
+                "results\\Dagger\\EnemyShooter\\EnemyShooter-48000.pt"
+            ]
+        }
+    },
+    "AgentController2D": {
+        "checkpoints": [
+            {
+                "steps": 48000,
+                "file_path": "results\\Dagger\\AgentController2D\\AgentController2D-48000.onnx",
+                "reward": null,
+                "creation_time": 1747494644.3906314,
+                "auxillary_file_paths": [
+                    "results\\Dagger\\AgentController2D\\AgentController2D-48000.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 48000,
+            "file_path": "results\\Dagger\\AgentController2D.onnx",
+            "reward": null,
+            "creation_time": 1747494644.3906314,
+            "auxillary_file_paths": [
+                "results\\Dagger\\AgentController2D\\AgentController2D-48000.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.6.0+cu118"
+    }
+}

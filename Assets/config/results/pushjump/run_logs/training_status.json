@@ -1,0 +1,73 @@
+{
+    "PushAgent2D": {
+        "checkpoints": [
+            {
+                "steps": 11648,
+                "file_path": "results\\pushjump\\PushAgent2D\\PushAgent2D-11648.onnx",
+                "reward": null,
+                "creation_time": 1747437979.645613,
+                "auxillary_file_paths": [
+                    "results\\pushjump\\PushAgent2D\\PushAgent2D-11648.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 11648,
+            "file_path": "results\\pushjump\\PushAgent2D.onnx",
+            "reward": null,
+            "creation_time": 1747437979.645613,
+            "auxillary_file_paths": [
+                "results\\pushjump\\PushAgent2D\\PushAgent2D-11648.pt"
+            ]
+        }
+    },
+    "AgentController2D": {
+        "checkpoints": [
+            {
+                "steps": 11648,
+                "file_path": "results\\pushjump\\AgentController2D\\AgentController2D-11648.onnx",
+                "reward": null,
+                "creation_time": 1747437979.7196233,
+                "auxillary_file_paths": [
+                    "results\\pushjump\\AgentController2D\\AgentController2D-11648.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 11648,
+            "file_path": "results\\pushjump\\AgentController2D.onnx",
+            "reward": null,
+            "creation_time": 1747437979.7196233,
+            "auxillary_file_paths": [
+                "results\\pushjump\\AgentController2D\\AgentController2D-11648.pt"
+            ]
+        }
+    },
+    "EnemyShooter": {
+        "checkpoints": [
+            {
+                "steps": 11648,
+                "file_path": "results\\pushjump\\EnemyShooter\\EnemyShooter-11648.onnx",
+                "reward": null,
+                "creation_time": 1747437979.778959,
+                "auxillary_file_paths": [
+                    "results\\pushjump\\EnemyShooter\\EnemyShooter-11648.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 11648,
+            "file_path": "results\\pushjump\\EnemyShooter.onnx",
+            "reward": null,
+            "creation_time": 1747437979.778959,
+            "auxillary_file_paths": [
+                "results\\pushjump\\EnemyShooter\\EnemyShooter-11648.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.6.0+cu118"
+    }
+}

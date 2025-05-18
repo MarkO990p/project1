@@ -18,7 +18,7 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
+  - Wall
   - 
   - 
   - 
@@ -66,4 +66,7 @@ TagManager:
     locked: 0
   - name: Effect
     uniqueID: 2995376771
+    locked: 0
+  - name: Wall
+    uniqueID: 1205578363
     locked: 0
