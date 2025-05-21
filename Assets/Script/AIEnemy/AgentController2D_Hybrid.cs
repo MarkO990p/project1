@@ -27,15 +27,15 @@ public class AgentController2D_Hybrid : Agent
     private float zoneMaxX;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private float previousDistance;
     private int patrolDirection = 1;
-
-    private enum AgentState { Patrol, Chasing, Attacking }
-    private AgentState currentState = AgentState.Patrol;
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
         float halfWidth = zoneSize.x / 2f;
         zoneMinX = zoneCenter.x - halfWidth;
         zoneMaxX = zoneCenter.x + halfWidth;
@@ -45,11 +45,15 @@ public class AgentController2D_Hybrid : Agent
     {
         transform.position = new Vector2(zoneCenter.x - 1f, zoneCenter.y);
         rb.velocity = Vector2.zero;
-        currentState = AgentState.Patrol;
         patrolDirection = 1;
         previousDistance = Vector2.Distance(transform.position, player.position);
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         lastAttackTime = 0f;
+
+        if (animator != null)
+        {
+            animator.SetBool("moving", false);
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -63,22 +67,29 @@ public class AgentController2D_Hybrid : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        UpdateState();
-
-        switch (currentState)
+        if (!IsGrounded())
         {
-            case AgentState.Patrol:
+            // ป้องกันการทำ action ขณะลอยอยู่
+            AddReward(-0.005f);
+            return;
+        }
+
+        int action = actions.DiscreteActions[0];
+
+        switch (action)
+        {
+            case 0: // Patrol
                 Patrol();
                 break;
-            case AgentState.Chasing:
+            case 1: // Chase
                 ChasePlayer();
                 break;
-            case AgentState.Attacking:
+            case 2: // Attack
                 AttackPlayer();
                 break;
         }
 
-        AddReward(-0.001f);
+        AddReward(-0.001f); // Time penalty
         FlipToFacePlayer();
     }
 
@@ -104,7 +115,6 @@ public class AgentController2D_Hybrid : Agent
 
     private void AttackPlayer()
     {
-        // หยุดการเคลื่อนไหว
         rb.velocity = Vector2.zero;
 
         float distance = Vector2.Distance(transform.position, player.position);
@@ -113,11 +123,22 @@ public class AgentController2D_Hybrid : Agent
             Health playerHealth = player.GetComponent<Health>();
             if (playerHealth != null)
             {
+                if (animator != null)
+                {
+                    animator.SetTrigger("meleeAttack");
+                    animator.SetBool("moving", false);
+                }
+
                 playerHealth.TakeDamage(attackDamage);
                 Debug.Log($"[Agent Dagger] Attacked {player.name}, dealt {attackDamage} damage.");
-                AddReward(1f);
+                AddReward(1f); // ให้รางวัลเมื่อโจมตีสำเร็จ
                 lastAttackTime = Time.time;
             }
+        }
+        else
+        {
+            // โจมตีไม่ถึง / cooldown ไม่ครบ = ลงโทษเล็กน้อย
+            AddReward(-0.01f);
         }
     }
 
@@ -126,6 +147,11 @@ public class AgentController2D_Hybrid : Agent
         float newX = transform.position.x + (direction * moveSpeed * Time.fixedDeltaTime);
         newX = Mathf.Clamp(newX, zoneMinX, zoneMaxX);
         transform.position = new Vector2(newX, transform.position.y);
+
+        if (animator != null)
+        {
+            animator.SetBool("moving", Mathf.Abs(direction) > 0.01f);
+        }
     }
 
     private void FlipToFacePlayer()
@@ -133,7 +159,6 @@ public class AgentController2D_Hybrid : Agent
         if (player == null) return;
 
         bool facingRight = player.position.x > transform.position.x;
-
         Vector3 scale = transform.localScale;
         scale.x = facingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
         transform.localScale = scale;
@@ -141,35 +166,8 @@ public class AgentController2D_Hybrid : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        var ca = actionsOut.ContinuousActions;
-        ca[0] = 0f;
-    }
-
-    private void UpdateState()
-    {
-        if (player == null) return;
-
-        float distance = Vector2.Distance(transform.position, player.position);
-        float verticalDiff = Mathf.Abs(player.position.y - transform.position.y);
-
-        if (!IsGrounded())
-        {
-            currentState = AgentState.Patrol;
-            return;
-        }
-
-        if (distance < attackRange && verticalDiff < 1.0f)
-        {
-            currentState = AgentState.Attacking;
-        }
-        else if (distance < 10f && verticalDiff < 1.0f)
-        {
-            currentState = AgentState.Chasing;
-        }
-        else
-        {
-            currentState = AgentState.Patrol;
-        }
+        var da = actionsOut.DiscreteActions;
+        da[0] = 0; // Default: patrol in heuristic
     }
 
     private bool IsGrounded()

@@ -37392,6 +37392,7 @@ Transform:
   - {fileID: 1446097869}
   - {fileID: 476777949}
   - {fileID: 320725105}
+  - {fileID: 1345337881}
   - {fileID: 862467628}
   - {fileID: 133807393}
   - {fileID: 1359728202}
@@ -60735,7 +60736,7 @@ GameObject:
   - component: {fileID: 1221875307}
   - component: {fileID: 1221875308}
   m_Layer: 8
-  m_Name: factory_55
+  m_Name: Object
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61779,6 +61780,90 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.12, y: 0.17}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1345337880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345337881}
+  - component: {fileID: 1345337882}
+  m_Layer: 0
+  m_Name: FantasticJungle-Background_3 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1345337881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345337880}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -890.4, y: 3913.755, z: 4.9926424}
+  m_LocalScale: {x: 15.869182, y: 14.489444, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 614080080}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1345337882
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345337880}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1131903860064397086, guid: a7982b05d4cb614a1a102f5dde952c52, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4, y: 1.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -141954,6 +142039,7 @@ MonoBehaviour:
   pushRewardMultiplier: 0.2
   distancePenalty: 0.001
   timePenalty: 0.001
+  moveLockDuration: 0.5
 --- !u!114 &5691969293536871949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141976,7 +142062,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 983242ce01b70054d9bb251a819d3870, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 65db58b759983444caf7e8f8ea82026c, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PushAgent2D
@@ -142857,6 +142943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1342218345}
     m_Modifications:
+    - target: {fileID: 31039019320638684, guid: 9627b6ad079747644aa1f9dbbf300f30, type: 3}
+      propertyPath: health
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 3575867399899211453, guid: 9627b6ad079747644aa1f9dbbf300f30, type: 3}
       propertyPath: m_Name
       value: SwordsmanBoss
@@ -143052,13 +143142,13 @@ MonoBehaviour:
     VectorObservationSize: 5
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 1
-      BranchSizes: 
-    VectorActionSize: 01000000
+      m_NumContinuousActions: 0
+      BranchSizes: 03000000
+    VectorActionSize: 03000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: fc4d89b9326a0004fbffcc7877b2283a, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 4a7fe013c25b7eb499622336d0d91958, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: AgentController2D
@@ -143170,7 +143260,7 @@ MonoBehaviour:
   isPlayer: 0
   iFramesDuration: 0.5
   numberOfFlashes: 3
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 19811986, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
   armor: 0
 --- !u!114 &7464362844472633866
 MonoBehaviour:
@@ -144113,7 +144203,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 1a3122b8492a5244cabef2a725986285, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: EnemyShooter

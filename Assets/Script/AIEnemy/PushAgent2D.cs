@@ -26,16 +26,25 @@ public class PushAgent2D : Agent
     public float distancePenalty = 0.001f;
     public float timePenalty = 0.001f;
 
+    [Header("Direction Lock Settings")]
+    public float moveLockDuration = 0.5f;
+
     private Rigidbody2D rb;
     private Rigidbody2D playerRb;
+    private Animator anim;
+
     private float lastDistanceToPlayer;
 
-    private Vector2 lookDirection = Vector2.right; // ✅ ทิศทางที่ Agent หันหน้า
+    private Vector2 lookDirection = Vector2.right;
+
+    private int currentMoveDirection = 0; // 0=idle, 1=left, 2=right
+    private float moveLockTimer = 0f;
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
         playerRb = player.GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     public override void OnEpisodeBegin()
@@ -43,6 +52,8 @@ public class PushAgent2D : Agent
         rb.velocity = Vector2.zero;
         if (playerRb != null) playerRb.velocity = Vector2.zero;
         lastDistanceToPlayer = Vector2.Distance(transform.position, player.position);
+        currentMoveDirection = 0;
+        moveLockTimer = 0f;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -62,28 +73,49 @@ public class PushAgent2D : Agent
         int moveAction = actions.DiscreteActions[0]; // 0=idle, 1=left, 2=right
         int jumpAction = actions.DiscreteActions[1]; // 0=ไม่กระโดด, 1=กระโดด
 
+        // ✅ ปลดล็อกทันทีถ้าผู้เล่นอยู่คนละฝั่ง
+        float dirToPlayer = player.position.x - transform.position.x;
+        float signToPlayer = Mathf.Sign(dirToPlayer);
+        float signMoving = currentMoveDirection == 1 ? -1f : (currentMoveDirection == 2 ? 1f : 0f);
+
+        if (moveLockTimer > 0f && signToPlayer != 0f && signToPlayer != signMoving)
+        {
+            moveLockTimer = 0f;
+        }
+
+        // ✅ ล็อกทิศทางใหม่เมื่อหมดเวลา หรือเปลี่ยนใจ
+        if (moveAction != 0 && moveAction != currentMoveDirection && moveLockTimer <= 0f)
+        {
+            currentMoveDirection = moveAction;
+            moveLockTimer = moveLockDuration;
+        }
+
+        // ✅ นับถอยหลังล็อก
+        if (moveLockTimer > 0f)
+        {
+            moveLockTimer -= Time.deltaTime;
+        }
+
+        // ✅ เดินตาม currentMoveDirection
         float moveX = 0f;
-        if (moveAction == 1) moveX = -1f;
-        else if (moveAction == 2) moveX = 1f;
+        if (currentMoveDirection == 1) moveX = -1f;
+        else if (currentMoveDirection == 2) moveX = 1f;
 
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
 
-        //Debug.Log($"[Agent Push Action] MoveAction: {moveAction}, JumpAction: {jumpAction}, MoveX: {moveX}, Velocity: {rb.velocity}");
-
-        // ✅ อัปเดตทิศทางที่หัน
+        // ✅ อัปเดตทิศที่หัน
         if (moveX != 0)
             lookDirection = new Vector2(moveX, 0f);
 
-        // ✅ กระโดดเฉพาะเมื่อเจอ Obstacle
+        // ✅ กระโดดเฉพาะเมื่อเจอ obstacle
         if (jumpAction == 1 && IsGrounded() && IsObstacleAhead())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             AddReward(0.02f);
-
             Debug.Log($"[Jump] Agent Push jumped at position {transform.position}, velocity: {rb.velocity}");
         }
 
-        // ❌ ลงโทษถ้ากระโดดโดยไม่เจอ Obstacle
+        // ❌ โดดโดยไม่มี obstacle → ลงโทษ
         if (jumpAction == 1 && !IsObstacleAhead())
         {
             AddReward(-0.01f);
@@ -110,11 +142,15 @@ public class PushAgent2D : Agent
         AddReward(-timePenalty);
         AddReward(-CalculateDistancePenalty());
 
-        // ✅ Flip หันหน้าตามผู้เล่น
+        // ✅ Flip sprite ตามตำแหน่งผู้เล่น
         if (player.position.x < transform.position.x)
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         else
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        // ✅ เล่นแอนิเมชันเดิน
+        bool isMoving = Mathf.Abs(rb.velocity.x) > 0.05f;
+        anim.SetBool("moving", isMoving);
     }
 
     private void PushPlayer(float distance)
