@@ -9,6 +9,7 @@ public class AgentController2D_Hybrid : Agent
     public Transform player;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public LayerMask playerLayer;
 
     [Header("Movement Settings")]
     public float moveSpeed = 2f;
@@ -22,7 +23,10 @@ public class AgentController2D_Hybrid : Agent
     public float attackRange = 1.0f;
     public float attackCooldown = 1.0f;
 
-    private float lastAttackTime = 0f;
+    [Header("Detection Settings")]
+    public float visionDistance = 3f;
+
+    private float attackCooldownTimer = 0f;
     private float zoneMinX;
     private float zoneMaxX;
 
@@ -30,6 +34,10 @@ public class AgentController2D_Hybrid : Agent
     private Animator animator;
     private float previousDistance;
     private int patrolDirection = 1;
+    private Vector2 lastPosition;
+    private float idleTime = 0f;
+    private bool previouslySawPlayer = false;
+    private int successfulHits = 0;
 
     public override void Initialize()
     {
@@ -48,7 +56,11 @@ public class AgentController2D_Hybrid : Agent
         patrolDirection = 1;
         previousDistance = Vector2.Distance(transform.position, player.position);
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        lastAttackTime = 0f;
+        attackCooldownTimer = 0f;
+        idleTime = 0f;
+        lastPosition = transform.position;
+        previouslySawPlayer = false;
+        successfulHits = 0;
 
         if (animator != null)
         {
@@ -58,59 +70,139 @@ public class AgentController2D_Hybrid : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.position.x / 10f);
-        sensor.AddObservation(transform.position.y / 5f);
-        sensor.AddObservation(player.position.x / 10f);
-        sensor.AddObservation(player.position.y / 5f);
-        sensor.AddObservation(Vector2.Distance(transform.position, player.position) / 10f);
+        Vector2 agentPos = transform.position;
+        Vector2 playerPos = player.position;
+        Vector2 diff = playerPos - agentPos;
+
+        sensor.AddObservation(agentPos.x / 10f);
+        sensor.AddObservation(agentPos.y / 5f);
+        sensor.AddObservation(playerPos.x / 10f);
+        sensor.AddObservation(playerPos.y / 5f);
+        sensor.AddObservation(diff.magnitude / 10f);
+        sensor.AddObservation(diff.x);
+        sensor.AddObservation(diff.y);
+        sensor.AddObservation(IsPlayerInZone() ? 1f : 0f);
+        sensor.AddObservation(CanSeePlayer() ? 1f : 0f);
+        sensor.AddObservation(rb.velocity.x);
+        sensor.AddObservation(rb.velocity.y);
+    }
+
+    public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
+    {
+        if (!IsPlayerInZone())
+        {
+            actionMask.SetActionEnabled(0, 1, false); // Chase
+            actionMask.SetActionEnabled(0, 2, false); // Attack
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
         if (!IsGrounded())
         {
-            // ป้องกันการทำ action ขณะลอยอยู่
             AddReward(-0.005f);
             return;
         }
 
+        attackCooldownTimer -= Time.fixedDeltaTime;
+
         int action = actions.DiscreteActions[0];
+        bool playerInZone = IsPlayerInZone();
+        bool canSee = CanSeePlayer();
+
+        float currentDistance = Vector2.Distance(transform.position, player.position);
+        float distanceDelta = previousDistance - currentDistance;
+
+        // ให้รางวัลตามระยะที่เข้าใกล้ player
+        AddReward(Mathf.Clamp(distanceDelta * 0.05f, -0.02f, 0.05f));
+
+        // เพิ่มรางวัลตามการอยู่ใกล้ player
+        float proximityReward = Mathf.Clamp(1f - (currentDistance / visionDistance), 0f, 1f) * 0.02f;
+        AddReward(proximityReward);
+
+        // รางวัลเมื่อเห็น player ครั้งแรก
+        if (!previouslySawPlayer && canSee)
+        {
+            AddReward(0.05f);
+        }
+        previouslySawPlayer = canSee;
 
         switch (action)
         {
             case 0: // Patrol
                 Patrol();
+                if (!playerInZone)
+                {
+                    AddReward(0.02f); // ดีที่ patrol ขณะ player อยู่นอกโซน
+                    if (currentDistance > 5f) AddReward(0.01f);
+                }
+                else
+                {
+                    AddReward(-0.02f); // ผิดที่ patrol ขณะ player อยู่ในโซน
+                }
                 break;
+
             case 1: // Chase
-                ChasePlayer();
+                if (playerInZone)
+                {
+                    ChasePlayer();
+                    AddReward(canSee ? 0.03f : -0.01f);
+                }
+                else
+                {
+                    Patrol();
+                    AddReward(-0.05f);
+                }
                 break;
+
             case 2: // Attack
-                AttackPlayer();
+                if (playerInZone)
+                {
+                    AttackPlayer();
+                }
+                else
+                {
+                    AddReward(-0.1f); // ผิดที่โจมตีนอกโซน
+                }
                 break;
         }
 
-        AddReward(-0.001f); // Time penalty
-        FlipToFacePlayer();
+        // ลงโทษถ้าอยู่นิ่งนานเกินไป
+        if (Vector2.Distance(transform.position, lastPosition) < 0.1f)
+        {
+            idleTime += Time.fixedDeltaTime;
+            if (idleTime > 1.5f)
+                AddReward(-0.01f);
+        }
+        else
+        {
+            idleTime = 0f;
+        }
+        lastPosition = transform.position;
+
+        AddReward(-0.001f); // time penalty
+        previousDistance = currentDistance;
     }
 
     private void Patrol()
     {
-        float nextX = transform.position.x + (patrolDirection * moveSpeed * Time.fixedDeltaTime);
+        float posX = transform.position.x;
+        float nextX = posX + patrolDirection * moveSpeed * Time.fixedDeltaTime;
+
         if (nextX < zoneMinX || nextX > zoneMaxX)
         {
             patrolDirection *= -1;
         }
+
         Move(patrolDirection);
+        FlipToPatrolDirection();
     }
 
     private void ChasePlayer()
     {
         float direction = Mathf.Sign(player.position.x - transform.position.x);
         Move(direction);
-
-        float currentDistance = Vector2.Distance(transform.position, player.position);
-        AddReward((previousDistance - currentDistance) * 0.01f);
-        previousDistance = currentDistance;
+        FlipToFacePlayer();
     }
 
     private void AttackPlayer()
@@ -118,8 +210,16 @@ public class AgentController2D_Hybrid : Agent
         rb.velocity = Vector2.zero;
 
         float distance = Vector2.Distance(transform.position, player.position);
-        if (distance <= attackRange && Time.time - lastAttackTime >= attackCooldown)
+        bool facingWrongWay = (transform.position.x - player.position.x) * transform.localScale.x > 0;
+
+        if (distance <= attackRange && attackCooldownTimer <= 0f && CanSeePlayer())
         {
+            if (facingWrongWay)
+            {
+                AddReward(-0.1f); // โจมตีหันผิดด้าน
+                return;
+            }
+
             Health playerHealth = player.GetComponent<Health>();
             if (playerHealth != null)
             {
@@ -130,23 +230,20 @@ public class AgentController2D_Hybrid : Agent
                 }
 
                 playerHealth.TakeDamage(attackDamage);
-                Debug.Log($"[Agent Dagger] Attacked {player.name}, dealt {attackDamage} damage.");
-                AddReward(1f); // ให้รางวัลเมื่อโจมตีสำเร็จ
-                lastAttackTime = Time.time;
+                successfulHits++;
+                AddReward(0.8f + (0.2f * successfulHits));
+                attackCooldownTimer = attackCooldown;
             }
         }
         else
         {
-            // โจมตีไม่ถึง / cooldown ไม่ครบ = ลงโทษเล็กน้อย
-            AddReward(-0.01f);
+            AddReward(-0.02f); // โจมตีพลาด
         }
     }
 
     private void Move(float direction)
     {
-        float newX = transform.position.x + (direction * moveSpeed * Time.fixedDeltaTime);
-        newX = Mathf.Clamp(newX, zoneMinX, zoneMaxX);
-        transform.position = new Vector2(newX, transform.position.y);
+        rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
 
         if (animator != null)
         {
@@ -164,15 +261,41 @@ public class AgentController2D_Hybrid : Agent
         transform.localScale = scale;
     }
 
-    public override void Heuristic(in ActionBuffers actionsOut)
+    private void FlipToPatrolDirection()
     {
-        var da = actionsOut.DiscreteActions;
-        da[0] = 0; // Default: patrol in heuristic
+        Vector3 scale = transform.localScale;
+        scale.x = patrolDirection > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+        transform.localScale = scale;
     }
 
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+    }
+
+    private bool IsPlayerInZone()
+    {
+        Vector2 playerPos = player.position;
+        Vector2 min = zoneCenter - (zoneSize / 2f);
+        Vector2 max = zoneCenter + (zoneSize / 2f);
+
+        return playerPos.x >= min.x && playerPos.x <= max.x &&
+               playerPos.y >= min.y && playerPos.y <= max.y;
+    }
+
+    private bool CanSeePlayer()
+    {
+        Vector2 origin = transform.position;
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, visionDistance, playerLayer);
+        return hit.collider != null && hit.collider.transform == player;
+    }
+
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        var da = actionsOut.DiscreteActions;
+        da[0] = 0; // Default: Patrol
     }
 
     private void OnDrawGizmos()
@@ -182,8 +305,14 @@ public class AgentController2D_Hybrid : Agent
 
         Gizmos.color = new Color(0f, 1f, 0f, 0.2f);
         Gizmos.DrawCube(center, size);
-
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(center, size);
+
+        if (player != null)
+        {
+            Gizmos.color = Color.red;
+            Vector2 dir = (player.position - transform.position).normalized;
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)(dir * visionDistance));
+        }
     }
 }
