@@ -13,17 +13,25 @@ public class EnemyShooterAgent : Agent
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
 
-    [Header("Settings")]
-    public float fireCooldown = 1.5f;
-    public float bulletSpeed = 10f;
-    public float groundYMin = -10f;
+    [Header("Cooldown Settings")]
+    public float baseCooldown = 1.5f;
+    public float minCooldown = 0.2f;
+    private float dynamicCooldown;
 
     [Header("Zone (X-Axis)")]
     public float zoneXMin = 0f;
     public float zoneXMax = 0f;
 
+    [Header("Bullet")]
+    public float bulletSpeed = 10f;
+    public float groundYMin = -10f;
+
     private float lastShootTime;
     private bool lastShootPressed = false;
+
+    // 🔥 Combo system
+    private int hitCombo = 0;
+    private int comboToFastFire = 3;
 
     public override void OnEpisodeBegin()
     {
@@ -31,6 +39,8 @@ public class EnemyShooterAgent : Agent
             rb.velocity = Vector2.zero;
 
         lastShootTime = Time.time;
+        dynamicCooldown = baseCooldown;
+        hitCombo = 0;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -73,7 +83,7 @@ public class EnemyShooterAgent : Agent
         bool facingCorrect = (dirToPlayer > 0 && !spriteRenderer.flipX) || (dirToPlayer < 0 && spriteRenderer.flipX);
 
         bool shootPressed = shoot > 0.5f;
-        if (shootPressed && !lastShootPressed && Time.time - lastShootTime >= fireCooldown && playerInZone)
+        if (shootPressed && !lastShootPressed && Time.time - lastShootTime >= dynamicCooldown && playerInZone)
         {
             TryShoot(facingCorrect);
             lastShootTime = Time.time;
@@ -104,6 +114,23 @@ public class EnemyShooterAgent : Agent
         }
 
         Debug.DrawLine(selectedFirePoint.position, selectedFirePoint.position + Vector3.right * (isFacingLeft ? -1f : 1f) * 2f, Color.red, 1f);
+    }
+
+    public void OnSuccessfulHit()
+    {
+        hitCombo++;
+        AddReward(0.2f);
+
+        if (hitCombo >= comboToFastFire)
+        {
+            dynamicCooldown = Mathf.Max(minCooldown, dynamicCooldown - 0.1f);
+        }
+    }
+
+    public void OnMissedShot()
+    {
+        hitCombo = 0;
+        dynamicCooldown = baseCooldown;
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)

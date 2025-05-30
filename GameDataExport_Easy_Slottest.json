@@ -1,0 +1,62 @@
+{
+    "maxHealth": 0.0,
+    "maxArmor": 0.0,
+    "gameDifficulty": 0,
+    "lastCheckpointScene": "EasyGame",
+    "lastCheckpointId": "1",
+    "lastCheckpointPosition": {
+        "x": 100.96409606933594,
+        "y": 24.091022491455079,
+        "z": 0.0
+    },
+    "playerPosition": {
+        "x": 139.4108428955078,
+        "y": 30.845746994018556,
+        "z": 0.0
+    },
+    "lastUpdated": -8584530149167019275,
+    "deathCount": 0,
+    "scenePositions": {
+        "keys": [
+            "LABzone3",
+            "MainMenu",
+            "EasyGame",
+            "NormalGame"
+        ],
+        "values": [
+            {
+                "x": -0.7200000286102295,
+                "y": -0.3139214515686035,
+                "z": 0.0
+            },
+            {
+                "x": -2.384185791015625e-7,
+                "y": -20.46757698059082,
+                "z": 0.0
+            },
+            {
+                "x": 100.96409606933594,
+                "y": 24.647869110107423,
+                "z": 0.0
+            },
+            {
+                "x": -0.6936149597167969,
+                "y": -0.03139221668243408,
+                "z": 0.0
+            }
+        ]
+    },
+    "coinsCollected": {
+        "keys": [],
+        "values": []
+    },
+    "currentHealth": 0.0,
+    "currentArmor": 0.0,
+    "lastSceneName": "EasyGame",
+    "completedScenes": [
+        "LABzone3",
+        "MainMenu",
+        "EasyGame",
+        "NormalGame"
+    ]
+}

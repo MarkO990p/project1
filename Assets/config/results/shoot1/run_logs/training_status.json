@@ -1,0 +1,163 @@
+{
+    "EnemyShooter": {
+        "checkpoints": [
+            {
+                "steps": 199977,
+                "file_path": "results\\shoot1\\EnemyShooter\\EnemyShooter-199977.onnx",
+                "reward": 8.950000315904617,
+                "creation_time": 1748579153.3455386,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\EnemyShooter\\EnemyShooter-199977.pt"
+                ]
+            },
+            {
+                "steps": 234781,
+                "file_path": "results\\shoot1\\EnemyShooter\\EnemyShooter-234781.onnx",
+                "reward": 8.900000234444937,
+                "creation_time": 1748579834.183446,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\EnemyShooter\\EnemyShooter-234781.pt"
+                ]
+            },
+            {
+                "steps": 249943,
+                "file_path": "results\\shoot1\\EnemyShooter\\EnemyShooter-249943.onnx",
+                "reward": 1.1999999756614368,
+                "creation_time": 1748582094.2599087,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\EnemyShooter\\EnemyShooter-249943.pt"
+                ]
+            },
+            {
+                "steps": 299947,
+                "file_path": "results\\shoot1\\EnemyShooter\\EnemyShooter-299947.onnx",
+                "reward": 0.9999999850988388,
+                "creation_time": 1748582840.6911006,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\EnemyShooter\\EnemyShooter-299947.pt"
+                ]
+            },
+            {
+                "steps": 335380,
+                "file_path": "results\\shoot1\\EnemyShooter\\EnemyShooter-335380.onnx",
+                "reward": 0.9999999888241291,
+                "creation_time": 1748583423.027974,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\EnemyShooter\\EnemyShooter-335380.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 335380,
+            "file_path": "results\\shoot1\\EnemyShooter.onnx",
+            "reward": 0.9999999888241291,
+            "creation_time": 1748583423.027974,
+            "auxillary_file_paths": [
+                "results\\shoot1\\EnemyShooter\\EnemyShooter-335380.pt"
+            ]
+        }
+    },
+    "AgentController2D": {
+        "checkpoints": [
+            {
+                "steps": 28288,
+                "file_path": "results\\shoot1\\AgentController2D\\AgentController2D-28288.onnx",
+                "reward": null,
+                "creation_time": 1748548341.7804282,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\AgentController2D\\AgentController2D-28288.pt"
+                ]
+            },
+            {
+                "steps": 49984,
+                "file_path": "results\\shoot1\\AgentController2D\\AgentController2D-49984.onnx",
+                "reward": null,
+                "creation_time": 1748579153.282202,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\AgentController2D\\AgentController2D-49984.pt"
+                ]
+            },
+            {
+                "steps": 58688,
+                "file_path": "results\\shoot1\\AgentController2D\\AgentController2D-58688.onnx",
+                "reward": null,
+                "creation_time": 1748579834.1245596,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\AgentController2D\\AgentController2D-58688.pt"
+                ]
+            },
+            {
+                "steps": 83840,
+                "file_path": "results\\shoot1\\AgentController2D\\AgentController2D-83840.onnx",
+                "reward": null,
+                "creation_time": 1748583423.103563,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\AgentController2D\\AgentController2D-83840.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 83840,
+            "file_path": "results\\shoot1\\AgentController2D.onnx",
+            "reward": null,
+            "creation_time": 1748583423.103563,
+            "auxillary_file_paths": [
+                "results\\shoot1\\AgentController2D\\AgentController2D-83840.pt"
+            ]
+        }
+    },
+    "PushAgent2D": {
+        "checkpoints": [
+            {
+                "steps": 28320,
+                "file_path": "results\\shoot1\\PushAgent2D\\PushAgent2D-28320.onnx",
+                "reward": null,
+                "creation_time": 1748548341.9701188,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\PushAgent2D\\PushAgent2D-28320.pt"
+                ]
+            },
+            {
+                "steps": 49984,
+                "file_path": "results\\shoot1\\PushAgent2D\\PushAgent2D-49984.onnx",
+                "reward": null,
+                "creation_time": 1748579148.5946262,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\PushAgent2D\\PushAgent2D-49984.pt"
+                ]
+            },
+            {
+                "steps": 58720,
+                "file_path": "results\\shoot1\\PushAgent2D\\PushAgent2D-58720.onnx",
+                "reward": null,
+                "creation_time": 1748579834.061814,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\PushAgent2D\\PushAgent2D-58720.pt"
+                ]
+            },
+            {
+                "steps": 83904,
+                "file_path": "results\\shoot1\\PushAgent2D\\PushAgent2D-83904.onnx",
+                "reward": null,
+                "creation_time": 1748583423.1922739,
+                "auxillary_file_paths": [
+                    "results\\shoot1\\PushAgent2D\\PushAgent2D-83904.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 83904,
+            "file_path": "results\\shoot1\\PushAgent2D.onnx",
+            "reward": null,
+            "creation_time": 1748583423.1922739,
+            "auxillary_file_paths": [
+                "results\\shoot1\\PushAgent2D\\PushAgent2D-83904.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.6.0+cu118"
+    }
+}

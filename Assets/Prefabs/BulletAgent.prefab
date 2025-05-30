@@ -195,6 +195,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   lifetime: 2
-  damage: 10
+  damage: 0
   ownerAgent: {fileID: 0}
   facingCorrect: 0
