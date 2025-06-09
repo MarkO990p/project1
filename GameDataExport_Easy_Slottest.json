@@ -3,25 +3,26 @@
     "maxArmor": 0.0,
     "gameDifficulty": 0,
     "lastCheckpointScene": "EasyGame",
-    "lastCheckpointId": "1",
+    "lastCheckpointId": "4",
     "lastCheckpointPosition": {
-        "x": 100.96409606933594,
-        "y": 24.091022491455079,
+        "x": 435.17999267578127,
+        "y": 44.16999816894531,
         "z": 0.0
     },
     "playerPosition": {
-        "x": 139.4108428955078,
-        "y": 30.845746994018556,
+        "x": -7.152557373046875e-7,
+        "y": -1.1542963981628419,
         "z": 0.0
     },
-    "lastUpdated": -8584530149167019275,
+    "lastUpdated": -8584524165568547719,
     "deathCount": 0,
     "scenePositions": {
         "keys": [
             "LABzone3",
             "MainMenu",
             "EasyGame",
-            "NormalGame"
+            "NormalGame",
+            "HardGame"
         ],
         "values": [
             {
@@ -35,13 +36,18 @@
                 "z": 0.0
             },
             {
-                "x": 100.96409606933594,
-                "y": 24.647869110107423,
+                "x": -2.384185791015625e-7,
+                "y": -0.1883522868156433,
                 "z": 0.0
             },
             {
-                "x": -0.6936149597167969,
-                "y": -0.03139221668243408,
+                "x": -2.384185791015625e-7,
+                "y": -0.4080966114997864,
+                "z": 0.0
+            },
+            {
+                "x": -2.384185791015625e-7,
+                "y": -0.2511363625526428,
                 "z": 0.0
             }
         ]
@@ -50,13 +56,14 @@
         "keys": [],
         "values": []
     },
-    "currentHealth": 0.0,
-    "currentArmor": 0.0,
-    "lastSceneName": "EasyGame",
+    "currentHealth": 100.0,
+    "currentArmor": 40.0,
+    "lastSceneName": "NormalGame",
     "completedScenes": [
         "LABzone3",
         "MainMenu",
         "EasyGame",
-        "NormalGame"
+        "NormalGame",
+        "HardGame"
     ]
 }
