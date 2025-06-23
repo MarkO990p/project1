@@ -1,0 +1,73 @@
+{
+    "AgentController2D": {
+        "checkpoints": [
+            {
+                "steps": 11346,
+                "file_path": "results\\Dagger1\\AgentController2D\\AgentController2D-11346.onnx",
+                "reward": -18.87508523464203,
+                "creation_time": 1750152980.6302812,
+                "auxillary_file_paths": [
+                    "results\\Dagger1\\AgentController2D\\AgentController2D-11346.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 11346,
+            "file_path": "results\\Dagger1\\AgentController2D.onnx",
+            "reward": -18.87508523464203,
+            "creation_time": 1750152980.6302812,
+            "auxillary_file_paths": [
+                "results\\Dagger1\\AgentController2D\\AgentController2D-11346.pt"
+            ]
+        }
+    },
+    "PushAgent2D": {
+        "checkpoints": [
+            {
+                "steps": 7616,
+                "file_path": "results\\Dagger1\\PushAgent2D\\PushAgent2D-7616.onnx",
+                "reward": null,
+                "creation_time": 1750152980.7161362,
+                "auxillary_file_paths": [
+                    "results\\Dagger1\\PushAgent2D\\PushAgent2D-7616.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 7616,
+            "file_path": "results\\Dagger1\\PushAgent2D.onnx",
+            "reward": null,
+            "creation_time": 1750152980.7161362,
+            "auxillary_file_paths": [
+                "results\\Dagger1\\PushAgent2D\\PushAgent2D-7616.pt"
+            ]
+        }
+    },
+    "EnemyShooter": {
+        "checkpoints": [
+            {
+                "steps": 15104,
+                "file_path": "results\\Dagger1\\EnemyShooter\\EnemyShooter-15104.onnx",
+                "reward": null,
+                "creation_time": 1750152980.7843451,
+                "auxillary_file_paths": [
+                    "results\\Dagger1\\EnemyShooter\\EnemyShooter-15104.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 15104,
+            "file_path": "results\\Dagger1\\EnemyShooter.onnx",
+            "reward": null,
+            "creation_time": 1750152980.7843451,
+            "auxillary_file_paths": [
+                "results\\Dagger1\\EnemyShooter\\EnemyShooter-15104.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.6.0+cu118"
+    }
+}

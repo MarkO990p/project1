@@ -2,42 +2,6 @@
     "EnemyShooter": {
         "checkpoints": [
             {
-                "steps": 2199936,
-                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2199936.onnx",
-                "reward": null,
-                "creation_time": 1748376322.9089065,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2199936.pt"
-                ]
-            },
-            {
-                "steps": 2249984,
-                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2249984.onnx",
-                "reward": null,
-                "creation_time": 1748377120.6254969,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2249984.pt"
-                ]
-            },
-            {
-                "steps": 2299968,
-                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2299968.onnx",
-                "reward": null,
-                "creation_time": 1748377917.2628162,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2299968.pt"
-                ]
-            },
-            {
-                "steps": 2349952,
-                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2349952.onnx",
-                "reward": null,
-                "creation_time": 1748378659.0570064,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2349952.pt"
-                ]
-            },
-            {
                 "steps": 2360576,
                 "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2360576.onnx",
                 "reward": null,
@@ -45,56 +9,56 @@
                 "auxillary_file_paths": [
                     "results\\Dagger2\\EnemyShooter\\EnemyShooter-2360576.pt"
                 ]
+            },
+            {
+                "steps": 2379264,
+                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2379264.onnx",
+                "reward": null,
+                "creation_time": 1750154665.9252994,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2379264.pt"
+                ]
+            },
+            {
+                "steps": 2390528,
+                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2390528.onnx",
+                "reward": null,
+                "creation_time": 1750156695.4184566,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2390528.pt"
+                ]
+            },
+            {
+                "steps": 2399936,
+                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2399936.onnx",
+                "reward": null,
+                "creation_time": 1750156863.3044822,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2399936.pt"
+                ]
+            },
+            {
+                "steps": 2402816,
+                "file_path": "results\\Dagger2\\EnemyShooter\\EnemyShooter-2402816.onnx",
+                "reward": null,
+                "creation_time": 1750156939.8338304,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\EnemyShooter\\EnemyShooter-2402816.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 2360576,
+            "steps": 2402816,
             "file_path": "results\\Dagger2\\EnemyShooter.onnx",
             "reward": null,
-            "creation_time": 1748378844.50949,
+            "creation_time": 1750156939.8338304,
             "auxillary_file_paths": [
-                "results\\Dagger2\\EnemyShooter\\EnemyShooter-2360576.pt"
+                "results\\Dagger2\\EnemyShooter\\EnemyShooter-2402816.pt"
             ]
         }
     },
     "PushAgent2D": {
         "checkpoints": [
-            {
-                "steps": 449984,
-                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-449984.onnx",
-                "reward": null,
-                "creation_time": 1748370085.85359,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-449984.pt"
-                ]
-            },
-            {
-                "steps": 499968,
-                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-499968.onnx",
-                "reward": null,
-                "creation_time": 1748372916.6707854,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-499968.pt"
-                ]
-            },
-            {
-                "steps": 547936,
-                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-547936.onnx",
-                "reward": null,
-                "creation_time": 1748375520.9813812,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-547936.pt"
-                ]
-            },
-            {
-                "steps": 549984,
-                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-549984.onnx",
-                "reward": null,
-                "creation_time": 1748376316.1644266,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-549984.pt"
-                ]
-            },
             {
                 "steps": 590272,
                 "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-590272.onnx",
@@ -103,56 +67,56 @@
                 "auxillary_file_paths": [
                     "results\\Dagger2\\PushAgent2D\\PushAgent2D-590272.pt"
                 ]
+            },
+            {
+                "steps": 599616,
+                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-599616.onnx",
+                "reward": null,
+                "creation_time": 1750154665.8357499,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-599616.pt"
+                ]
+            },
+            {
+                "steps": 599968,
+                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-599968.onnx",
+                "reward": null,
+                "creation_time": 1750156638.928208,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-599968.pt"
+                ]
+            },
+            {
+                "steps": 605248,
+                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-605248.onnx",
+                "reward": null,
+                "creation_time": 1750156695.5100634,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-605248.pt"
+                ]
+            },
+            {
+                "steps": 611456,
+                "file_path": "results\\Dagger2\\PushAgent2D\\PushAgent2D-611456.onnx",
+                "reward": null,
+                "creation_time": 1750156939.9302166,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\PushAgent2D\\PushAgent2D-611456.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 590272,
+            "steps": 611456,
             "file_path": "results\\Dagger2\\PushAgent2D.onnx",
             "reward": null,
-            "creation_time": 1748378844.4261758,
+            "creation_time": 1750156939.9302166,
             "auxillary_file_paths": [
-                "results\\Dagger2\\PushAgent2D\\PushAgent2D-590272.pt"
+                "results\\Dagger2\\PushAgent2D\\PushAgent2D-611456.pt"
             ]
         }
     },
     "AgentController2D": {
         "checkpoints": [
-            {
-                "steps": 449984,
-                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-449984.onnx",
-                "reward": null,
-                "creation_time": 1748370091.3991132,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\AgentController2D\\AgentController2D-449984.pt"
-                ]
-            },
-            {
-                "steps": 499968,
-                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-499968.onnx",
-                "reward": null,
-                "creation_time": 1748372921.3691955,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\AgentController2D\\AgentController2D-499968.pt"
-                ]
-            },
-            {
-                "steps": 547840,
-                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-547840.onnx",
-                "reward": null,
-                "creation_time": 1748375520.8949423,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\AgentController2D\\AgentController2D-547840.pt"
-                ]
-            },
-            {
-                "steps": 549952,
-                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-549952.onnx",
-                "reward": null,
-                "creation_time": 1748376322.9836464,
-                "auxillary_file_paths": [
-                    "results\\Dagger2\\AgentController2D\\AgentController2D-549952.pt"
-                ]
-            },
             {
                 "steps": 590144,
                 "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-590144.onnx",
@@ -161,15 +125,51 @@
                 "auxillary_file_paths": [
                     "results\\Dagger2\\AgentController2D\\AgentController2D-590144.pt"
                 ]
+            },
+            {
+                "steps": 599947,
+                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-599947.onnx",
+                "reward": 108.83478307723999,
+                "creation_time": 1750154608.1565943,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\AgentController2D\\AgentController2D-599947.pt"
+                ]
+            },
+            {
+                "steps": 604105,
+                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-604105.onnx",
+                "reward": 56.65524213512739,
+                "creation_time": 1750154665.728431,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\AgentController2D\\AgentController2D-604105.pt"
+                ]
+            },
+            {
+                "steps": 612546,
+                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-612546.onnx",
+                "reward": 0.36138069140178286,
+                "creation_time": 1750156695.5915835,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\AgentController2D\\AgentController2D-612546.pt"
+                ]
+            },
+            {
+                "steps": 621784,
+                "file_path": "results\\Dagger2\\AgentController2D\\AgentController2D-621784.onnx",
+                "reward": 22.201613436142605,
+                "creation_time": 1750156939.7477458,
+                "auxillary_file_paths": [
+                    "results\\Dagger2\\AgentController2D\\AgentController2D-621784.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 590144,
+            "steps": 621784,
             "file_path": "results\\Dagger2\\AgentController2D.onnx",
-            "reward": null,
-            "creation_time": 1748378844.5961492,
+            "reward": 22.201613436142605,
+            "creation_time": 1750156939.7477458,
             "auxillary_file_paths": [
-                "results\\Dagger2\\AgentController2D\\AgentController2D-590144.pt"
+                "results\\Dagger2\\AgentController2D\\AgentController2D-621784.pt"
             ]
         }
     },

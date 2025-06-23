@@ -231,8 +231,9 @@ public class AgentController2D_Hybrid : Agent
 
                 playerHealth.TakeDamage(attackDamage);
                 successfulHits++;
-                AddReward(0.8f + (0.2f * successfulHits));
-                attackCooldownTimer = attackCooldown;
+                AddReward(1.0f);
+
+                EndEpisode();
             }
         }
         else

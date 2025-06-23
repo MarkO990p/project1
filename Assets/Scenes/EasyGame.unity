@@ -2588,7 +2588,7 @@ Transform:
   m_GameObject: {fileID: 160107596}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 39.69, y: -31.49, z: 8.970359}
+  m_LocalPosition: {x: 41.3, y: -31.7, z: 8.970359}
   m_LocalScale: {x: 1.9154001, y: 1.3756, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -140445,7 +140445,7 @@ Transform:
   m_GameObject: {fileID: 5691969293536871946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21, y: -54.88, z: 0}
+  m_LocalPosition: {x: 12.74, y: -54.88, z: 0}
   m_LocalScale: {x: 0.57, y: 0.4896, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143249,7 +143249,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: e5e3d16d70e62c944912e7616475991f, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 03482b94dc29ef64db0216c8b8af37c4, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PushAgent2D
@@ -144339,7 +144339,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 3eaf2efec1ea1df479af9fcfedc40e83, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c4172a1e5d3ff574993e3cde803af880, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: AgentController2D
@@ -145395,7 +145395,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: ff139a3a8c1689b4cb75bae928a1e9cf, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c50df8909f251664483cc54364afe50c, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: EnemyShooter

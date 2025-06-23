@@ -1,0 +1,73 @@
+{
+    "AgentController2D": {
+        "checkpoints": [
+            {
+                "steps": 19200,
+                "file_path": "results\\makr\\AgentController2D\\AgentController2D-19200.onnx",
+                "reward": null,
+                "creation_time": 1749473500.5727968,
+                "auxillary_file_paths": [
+                    "results\\makr\\AgentController2D\\AgentController2D-19200.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 19200,
+            "file_path": "results\\makr\\AgentController2D.onnx",
+            "reward": null,
+            "creation_time": 1749473500.5727968,
+            "auxillary_file_paths": [
+                "results\\makr\\AgentController2D\\AgentController2D-19200.pt"
+            ]
+        }
+    },
+    "PushAgent2D": {
+        "checkpoints": [
+            {
+                "steps": 12800,
+                "file_path": "results\\makr\\PushAgent2D\\PushAgent2D-12800.onnx",
+                "reward": null,
+                "creation_time": 1749473500.6693895,
+                "auxillary_file_paths": [
+                    "results\\makr\\PushAgent2D\\PushAgent2D-12800.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 12800,
+            "file_path": "results\\makr\\PushAgent2D.onnx",
+            "reward": null,
+            "creation_time": 1749473500.6693895,
+            "auxillary_file_paths": [
+                "results\\makr\\PushAgent2D\\PushAgent2D-12800.pt"
+            ]
+        }
+    },
+    "EnemyShooter": {
+        "checkpoints": [
+            {
+                "steps": 25600,
+                "file_path": "results\\makr\\EnemyShooter\\EnemyShooter-25600.onnx",
+                "reward": null,
+                "creation_time": 1749473500.7410507,
+                "auxillary_file_paths": [
+                    "results\\makr\\EnemyShooter\\EnemyShooter-25600.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 25600,
+            "file_path": "results\\makr\\EnemyShooter.onnx",
+            "reward": null,
+            "creation_time": 1749473500.7410507,
+            "auxillary_file_paths": [
+                "results\\makr\\EnemyShooter\\EnemyShooter-25600.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.6.0+cu118"
+    }
+}
